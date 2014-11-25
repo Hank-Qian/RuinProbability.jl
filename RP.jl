@@ -7,18 +7,19 @@ using Gadfly;
 
 export SPExp,SPMixExp,QQPlot
 
-function SPExp(initial_capital::Number, claims_data::Array{Float64,1}, loss_ratio::Float64, expense_ratio::Float64, claims_data_per_year::Float64)
-s= 1 - (1 - loss_ratio/expense_ratio)* claims_data_per_year * exp(-(1/ (mean(claims_data))- claims_data_per_year /( claims_data_per_year * mean(claims_data) * (expense_ratio/loss_ratio))) * initial_capital)/(1/mean(claims_data)*claims_data_per_year*mean(claims_data)*expense_ratio/(loss_ratio) - claims_data_per_year);
+function SPExp(initial_capital::Number, claims_data::Array{Float64,1}, loss_ratio::Float64, expense_ratio::Float64, duration::Number)
+s= 1 - (1 - loss_ratio/expense_ratio)* (length(claims_data)/duration) * exp(-(1/ (mean(claims_data))- (length(claims_data)/duration) /( (length(claims_data)/duration) * mean(claims_data) * (expense_ratio/loss_ratio))) * initial_capital)/(1/mean(claims_data)*(length(claims_data)/duration)*mean(claims_data)*expense_ratio/(loss_ratio) - (length(claims_data)/duration));
 println("initial_capital= $initial_capital");
 println("loss_ratio = $loss_ratio");
 println("expense_ratio = $expense_ratio");
+printlb("duration = $duration");
 println("survival_probability_exp= $s")
 end
 
 
 end # module
 
-function SPMixExp(initial_capital::Number, claims_data::Array{Float64,1}, loss_ratio::Float64, expense_ratio::Float64, claims_data_per_year::Float64) 
+function SPMixExp(initial_capital::Number, claims_data::Array{Float64,1}, loss_ratio::Float64, expense_ratio::Float64, duration::Number) 
 
 Theta = [100000. 100000. 100000.];
 P = [0.5 0.4 0.1];
@@ -49,12 +50,12 @@ for n=1:3;
 Alpha[n]=1/Theta[n];
 P_a[n]=P[n];
 end;
-A=((claims_data_per_year*mean(claims_data)*expense_ratio/(loss_ratio))
- * (Alpha[1] + Alpha[2] + Alpha[3]) - claims_data_per_year)/ (claims_data_per_year*mean(claims_data)*expense_ratio/(loss_ratio));
-B=((claims_data_per_year*mean(claims_data)*expense_ratio/(loss_ratio))
- * (Alpha[1] * Alpha[2] + Alpha[3] * Alpha[2] + Alpha[1] * Alpha[3]) - (Alpha[1] + Alpha[2] + Alpha[3]) * claims_data_per_year + (Alpha[1] * P_a[1] + Alpha[2] * P_a[2] + Alpha[3] * P_a[3]) * claims_data_per_year) / (claims_data_per_year*mean(claims_data)*expense_ratio/(loss_ratio));
-C=((claims_data_per_year*mean(claims_data)*expense_ratio/(loss_ratio))
- * Alpha[1] * Alpha[2] * Alpha[3] - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2]) * claims_data_per_year + (Alpha[1] * P_a[1] * (Alpha[2] + Alpha[3]) + Alpha[2] * P_a[2] * (Alpha[1] + Alpha[3]) + Alpha[3] * P_a[3] * (Alpha[1] + Alpha[2])) * claims_data_per_year) / (claims_data_per_year*mean(claims_data)*expense_ratio/(loss_ratio));
+A=(((length(claims_data)/duration)*mean(claims_data)*expense_ratio/(loss_ratio))
+ * (Alpha[1] + Alpha[2] + Alpha[3]) - (length(claims_data)/duration))/ ((length(claims_data)/duration)*mean(claims_data)*expense_ratio/(loss_ratio));
+B=(((length(claims_data)/duration)*mean(claims_data)*expense_ratio/(loss_ratio))
+ * (Alpha[1] * Alpha[2] + Alpha[3] * Alpha[2] + Alpha[1] * Alpha[3]) - (Alpha[1] + Alpha[2] + Alpha[3]) * (length(claims_data)/duration) + (Alpha[1] * P_a[1] + Alpha[2] * P_a[2] + Alpha[3] * P_a[3]) * (length(claims_data)/duration)) / ((length(claims_data)/duration)*mean(claims_data)*expense_ratio/(loss_ratio));
+C=(((length(claims_data)/duration)*mean(claims_data)*expense_ratio/(loss_ratio))
+ * Alpha[1] * Alpha[2] * Alpha[3] - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2]) * (length(claims_data)/duration) + (Alpha[1] * P_a[1] * (Alpha[2] + Alpha[3]) + Alpha[2] * P_a[2] * (Alpha[1] + Alpha[3]) + Alpha[3] * P_a[3] * (Alpha[1] + Alpha[2])) * (length(claims_data)/duration)) / ((length(claims_data)/duration)*mean(claims_data)*expense_ratio/(loss_ratio));
 a= -(A^3)/27 + -C/2 + A*B/6;
 b= B/3 + -(A^2)/9;
 s_1= -A/3 + 2 * sqrt(-b) * cos(acos(a/(-b)^(3/2))/3);
@@ -68,6 +69,7 @@ sm=1 + N * exp(s_1 * initial_capital) + p * exp( s_2 * initial_capital) + q* exp
 println("initial_capital= $initial_capital");
 println("loss_ratio = $loss_ratio");
 println("expense_ratio = $expense_ratio");
+printlb("duration = $duration");
 println("survival_probability_exp= $sm")
 end
 
