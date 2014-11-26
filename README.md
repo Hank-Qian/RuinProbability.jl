@@ -9,12 +9,17 @@ Pkg.add("RuinProbability")
 ##############
 Usgae
 ==============
-There are three functions in the model now. And the functions are related to the information which is inputed by user. For calculating the ruin probability, user needs to input:
-$initial_capital =
-$loss_ratio = 
-$expense_ratio =
-$duration =
-$and input the claims_data = by excel or text as well, which can be push into the Julia from outernal file. The format of the claims_data should be a row of data without the title.
+There are three functions in the model now. And the functions are related to the information which is inputed by user. For calculating the ruin probability, user needs to input some basic parameters:
+##############
+initial_capital =
+##############
+loss_ratio = 
+##############
+expense_ratio =
+##############
+duration =
+##############
+and input the claims_data = by excel or text as well, which can be push into the Julia from outernal file. The format of the claims_data should be a row of data without the title.
 Then the function will be work if enter:
 SPExp(initial_capital, claims_data, loss_ratio, 	expense_ratio, duration)
 SPMixExp(		initial_capital, claims_data, loss_ratio, expense_ratio, duration)
