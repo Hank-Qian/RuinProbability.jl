@@ -20,8 +20,14 @@ expense_ratio =
 duration =
 ##############
 and input the claims_data = by excel or text as well, which can be push into the Julia from outernal file. The format of the claims_data should be a row of data without the title.
-Then the function will be work if enter:
+##############
+Then the function will be work if enter function's name:
+##############
 SPExp(initial_capital, claims_data, loss_ratio, 	expense_ratio, duration)
-SPMixExp(		initial_capital, claims_data, loss_ratio, expense_ratio, duration)
+##############
+SPMixExp(initial_capital, claims_data, loss_ratio, expense_ratio, duration)
+##############
 QQPlot(claims_data)
+##############
+SPExp is survival probability under exponential distribution, SPMixExp is survival probability under mixture three exponential distribution, QQPlot presents the evaluation of fitting under different claims distributions. 
 
