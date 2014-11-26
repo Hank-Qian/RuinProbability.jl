@@ -1,6 +1,6 @@
 RuinProbability
 ===============
-This [Julia]julialang.org package is based on ruin theory in acturail field.
+This [Julia](julialang.org) package is based on ruin theory in acturail field.
 ##############
 Installation
 ===============
