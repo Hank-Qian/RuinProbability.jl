@@ -15,15 +15,16 @@ Pkg.add("RuinProbability")
 Usgae
 =
 There are four functions in the model now. And the functions are related to the information which need to be inputed by user. For calculating the ruin probability, user needs to input some basic parameters, for example:
-=
+
 * **initial_capital = 100000**
 * **loss_ratio = 0.66**
 * **expense_ratio = 0.27**
 * **duration = 10**
+
 and input the **claims_data = collect(readdlm("local document"))**, which can be push into the Julia from outernal file. The format of the claims_data should be a row of data without title.
-#
+#########
 After the surplus process basic information inputted, user needs to decide the claims distribution, the distribution is fitted by EM algorithm, up to now, there are Exponential distribution and mixture three exponential distribution can be choosed. User needs to input **EMfit(claims_data)** to fit the data. **Expecially**, if use EM algorithm to fit data into exponential distribution, the parameter of the exponential distribution is 1/mean(claims_data), so it is easy to directly put into the ruin probability function instead of using EM firstly. This **EMfit** is only for fitting data into mixture three exponential distribution.
-#
+##########
 Then user can get the survival probability(survival probability + ruin probability = 1) by entering such codes:
 * **SPExp(surplusprocess)**, it shows the survival probability under exponential distribution claims distribution. 
 * **SPMixExp(surplusprocess)**, it shows the survival probability under mixture three exponential distribution claims distribution. 
