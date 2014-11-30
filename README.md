@@ -28,7 +28,7 @@ After the surplus process basic information inputted, user needs to decide the c
 Then user can get the survival probability(survival probability + ruin probability = 1) by entering such codes:
 * **SPExp(surplusprocess)**, it shows the survival probability under exponential distribution claims distribution. 
 * **SPMixExp(surplusprocess)**, it shows the survival probability under mixture three exponential distribution claims distribution. 
-QQPlot presents the evaluation of the fitting. In QQPlot function, it will provide the comparison about QQplot between two different claims distributions by entering **QQPlot(claims_data)**.
+* QQPlot presents the evaluation of the fitting. In QQPlot function, it will provide the comparison about QQplot between two different claims distributions by entering **QQPlot(claims_data)**.
 
 
 
