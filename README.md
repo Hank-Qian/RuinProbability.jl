@@ -25,10 +25,10 @@ and input the **claims_data = collect(readdlm("local document"))**, which can be
 #########
 After the surplus process basic information inputted, user needs to decide the claims distribution, the distribution is fitted by EM algorithm, up to now, there are Exponential distribution and mixture three exponential distribution can be choosed. User needs to input **EMfit(claims_data)** to fit the data. **Expecially**, if use EM algorithm to fit data into exponential distribution, the parameter of the exponential distribution is 1/mean(claims_data), so it is easy to directly put into the ruin probability function instead of using EM firstly. This **EMfit** is only for fitting data into mixture three exponential distribution.
 ##########
-Then user can get the survival probability(survival probability + ruin probability = 1) by entering such codes:
+Then user can get the survival probability(survival probability + ruin probability = 1) by such codes:
 * **SPExp(surplusprocess)**, it shows the survival probability under exponential distribution claims distribution. 
 * **SPMixExp(surplusprocess)**, it shows the survival probability under mixture three exponential distribution claims distribution. 
-* QQPlot presents the evaluation of the fitting. In QQPlot function, it will provide the comparison about QQplot between two different claims distributions by entering **QQPlot(claims_data)**.
+* QQPlot presents the evaluation of the fitting. In QQPlot function, it will provide the comparison about QQplot between two different claims distributions by **QQPlot(claims_data)**.
 
 
 
