@@ -21,7 +21,7 @@ There are four functions in the model now. And the functions are related to the 
 * **expense_ratio = 0.27**
 * **duration = 10**
 
-and input the **claims_data = collect(readdlm("local document"))**, which can be push into the Julia from outernal file. The format of the claims_data should be a row of data without title.
+and input the **claims_data = collect(readdlm("local document"))**, which can read outernal file in Julia. The format of the claims_data should be a row of data without title.
 #########
 After the surplus process basic information inputted, user needs to decide the claims distribution, the distribution is fitted by EM algorithm, up to now, there are Exponential distribution and mixture three exponential distribution can be choosed. User needs to input **EMfit(claims_data)** to fit the data. **Expecially**, if use EM algorithm to fit data into exponential distribution, the parameter of the exponential distribution is 1/mean(claims_data), so it is easy to directly put into the ruin probability function instead of using EM firstly. This **EMfit** is only for fitting data into mixture three exponential distribution.
 ##########
