@@ -15,11 +15,11 @@ Pkg.add("RuinProbability")
 Usgae
 =
 There are four functions in the model now. And the functions are related to the information which need to be inputed by user. For calculating the ruin probability, user needs to input some basic parameters, for example:
-#
+=
 * **initial_capital = 100000**
-#
+=
 * **loss_ratio = 0.66**
-#
+=
 * **expense_ratio = 0.27**
 #
 * **duration = 10**
