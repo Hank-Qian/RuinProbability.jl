@@ -197,7 +197,7 @@ end;
 return s;
 end;
 
-#Sum part in ruin probability
+#Sum part in fractional gamma distribution ruin probability
 sumpart=0;
 for i=1:(m+n);
 sumpart=sumpart+ Mk[i] * MiLe(Sk[i] * initial_capital^(1/n));
