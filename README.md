@@ -9,7 +9,7 @@ Claims models and claims size models will be extended in the future.
 Installation
 =
 ```
-Pkg.add("RuinProbability")
+Pkg.clone("https://github.com/Hank-Qian/RuinProbability.jl")
 ```
 #
 Usage
