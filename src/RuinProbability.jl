@@ -28,8 +28,6 @@ end
 # duration=10 ( the unit of duration is year)
 #-------------------------------------------------------------------------------
 
-
-
 end # module
 
 function SPExp(surplusprocess)
