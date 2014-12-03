@@ -29,6 +29,9 @@ end
 #-------------------------------------------------------------------------------
 
 
+
+end # module
+
 function SPExp(surplusprocess)
        leng = length(claims_data);
        aver = mean(claims_data);
@@ -38,7 +41,6 @@ end
 # This result is generated from surplus process with exponential claims distribution and claims size is distributed by poison process. The function is produced by Laplace transform and inverse Laplace transform from IE to IDE to the final result.   
 #-------------------------------------------------------------------------------
 
-end # module
 
 function EMfit(claims_data)
        Theta = [100000. 100000. 100000.];
