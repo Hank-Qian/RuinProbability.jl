@@ -30,8 +30,8 @@ end
 include("SPExponential.jl");
 include("SPMix3Exponential.jl");
 include("QQPlot.jl");
-include("EMfit");
-include("SPFG");
+include("EMfit.jl");
+include("SPFG.jl");
 end # module
 
 
