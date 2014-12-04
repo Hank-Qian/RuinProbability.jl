@@ -1,4 +1,5 @@
-include("surplusprocess.jl");
+include("surplusprocess.jl")
+
 function SPExp(surplusprocess)
        leng = length(claims_data);
        aver = mean(claims_data);
