@@ -1,4 +1,5 @@
-include("surplusprocess.jl");
+include("surplusprocess.jl")
+
 function SPFG(surplusprocess)
 #Gamma Distribution Fitting by MLE
 a = 0.5/(log(mean(claims_data)) - mean(log(claims_data)));
