@@ -4,7 +4,7 @@ module RuinProbability
        using Distributions;
        using Gadfly;
        using Polynomial;
-export SPExp, SPMixExp, SPFG, QQPlot,  surplusprocess, EMfit
+export SPExp, SPMixExp, SPFG, QQPlot,  surplusprocess, EMfit, PlotSP
 
 #-------------------------------------------------------------------------------
 # SPExp: survival probability under exponential distribution
@@ -26,7 +26,7 @@ include("SPMix3Exponential.jl");
 include("QQPlot.jl");
 include("EMfit.jl");
 include("SPFractionGamma.jl");
-include("PlotSP.jl:);
+include("PlotSP.jl");
 
 end # module
 
