@@ -11,13 +11,7 @@ export SPExp, SPMixExp, SPFG, QQPlot,  surplusprocess, EMfit
 # SPMixExp: survival probability under mixture three exponential distribution
 # QQPlot: QQplot comparison between two different claims models
 #-------------------------------------------------------------------------------
-type surplusprocess
-       initial_capital::Number;
-       claims_data::Array{Float64,1};
-       loss_ratio::Float64;
-       expense_ratio::Float64;
-       duration::Number;
-end
+
 #-------------------------------------------------------------------------------
 # User needs to input some basic information about the company.
 # For example, user needs to type:
