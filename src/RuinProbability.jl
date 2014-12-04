@@ -27,6 +27,6 @@ include("QQPlot.jl");
 include("EMfit.jl");
 include("SPFractionGamma.jl");
 include("PlotSP.jl");
-
+include("surplusprocess.jl");
 end # module
 
