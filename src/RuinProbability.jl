@@ -32,5 +32,7 @@ include("SPMix3Exponential.jl");
 include("QQPlot.jl");
 include("EMfit.jl");
 include("SPFractionGamma.jl");
+include("PlotSP.jl:);
+
 end # module
 
