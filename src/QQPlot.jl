@@ -1,5 +1,8 @@
 function QQPlot(claims_data)
-leng=length(claims_data)
+       leng=length(claims_data);
+       aver=mean(claims_data);
+       Alpha=zeros(3);
+       P_a=zeros(3);
        for n=1:3;
               Alpha[n]=EMfit(claims_data)[2][n]
               P_a[n]= EMfit(claims_data)[1][n]
