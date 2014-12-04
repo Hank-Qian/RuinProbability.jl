@@ -1,4 +1,5 @@
-include("surplusprocess.jl");
+include("surplusprocess.jl")
+
 function SPMixExp(surplusprocess) 
        Alpha=zeros(3);
        P_a=zeros(3);
