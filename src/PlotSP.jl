@@ -1,35 +1,55 @@
-include("surplusprocess.jl")
-
-function PlotSP(surplusprocess)
-ppp=5000;
-u=zeros(1000);
-spe=zeros(1000);
-spm=zeros(1000);
-spf=zeros(1000);
-sumpart=zeros(1000);
-Alpha=zeros(3);
-P_a=zeros(3);
-leng = length(claims_data);
-aver = mean(claims_data);
-for n=1:3;
-Alpha[n]=EMfit(claims_data)[2][n];
-P_a[n]= EMfit(claims_data)[1][n];
-end;
-A=(((leng/duration)*aver*expense_ratio/(loss_ratio))
- * (Alpha[1] + Alpha[2] + Alpha[3]) - (leng/duration))/ ((leng/duration)*aver*expense_ratio/(loss_ratio));
-B=(((leng/duration)*aver*expense_ratio/(loss_ratio))
- * (Alpha[1] * Alpha[2] + Alpha[3] * Alpha[2] + Alpha[1] * Alpha[3]) - (Alpha[1] + Alpha[2] + Alpha[3]) * (leng/duration) + (Alpha[1] * P_a[1] + Alpha[2] * P_a[2] + Alpha[3] * P_a[3]) * (leng/duration)) / ((leng/duration)*aver*expense_ratio/(loss_ratio));
-C=(((leng/duration)*aver*expense_ratio/(loss_ratio))
- * Alpha[1] * Alpha[2] * Alpha[3] - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2]) * (leng/duration) + (Alpha[1] * P_a[1] * (Alpha[2] + Alpha[3]) + Alpha[2] * P_a[2] * (Alpha[1] + Alpha[3]) + Alpha[3] * P_a[3] * (Alpha[1] + Alpha[2])) * (leng/duration)) / ((leng/duration)*aver*expense_ratio/(loss_ratio));
-a= -(A^3)/27 + -C/2 + A*B/6;
-b= B/3 + -(A^2)/9;
-s_1= -A/3 + 2 * sqrt(-b) * cos(acos(a/(-b)^(3/2))/3);
-s_2= -A/3 + 2 * sqrt(-b) * cos((acos(a/(-b)^(3/2) )+ 2pi)/3);
-s_3= -A/3 + 2 * sqrt(-b) * cos((acos(a/(-b)^(3/2) )- 2pi)/3);
-M=-((1- loss_ratio/expense_ratio) * Alpha[1] * Alpha[2] * Alpha[3]) / (s_1 * s_2 * s_3);
-p=(1/((s_2 - s_1) * (s_3 - s_2))) * ((1- loss_ratio/expense_ratio) * (-s_2 * (Alpha[1] + Alpha[2] + Alpha[3]) - (s_2)^2 - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2])) + s_1 * s_3 * M);
-N= (1/(s_3 - s_1)) * (-(1- loss_ratio/expense_ratio) * (Alpha[1] + Alpha[2] + Alpha[3]) - M * s_3 - (s_1 + s_2) * (1- loss_ratio/expense_ratio) - (s_3-s_2) * p);
-q=(1- loss_ratio/expense_ratio) - M - N - p;
+function PlotSP(sp::SurplusProcess)
+	ppp=5000;
+	u=zeros(1000);
+	spe=zeros(1000);
+	spm=zeros(1000);
+	spf=zeros(1000);
+	sumpart=zeros(1000);
+	Alpha = zeros(3);
+	P_a = zeros(3);
+	
+       leng = length(sp.claims_data);
+       aver = mean(sp.claims_data);
+       
+       for n=1:3;
+              Alpha[n] = EMfit(sp.claims_data)[2][n];
+              P_a[n] = EMfit(sp.claims_data)[1][n];
+       end;
+       A = (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio
+        * (Alpha[1] + Alpha[2] + Alpha[3]) - leng / sp.duration) 
+        / leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio ;
+        
+       B = (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio
+        * (Alpha[1] * Alpha[2] + Alpha[3] * Alpha[2] + Alpha[1] * Alpha[3])
+        - (Alpha[1] + Alpha[2] + Alpha[3]) * leng / sp.duration 
+        + (Alpha[1] * P_a[1] + Alpha[2] * P_a[2] + Alpha[3] * P_a[3]) * leng / sp.duration) 
+        / leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio;
+        
+       C = (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio
+        * Alpha[1] * Alpha[2] * Alpha[3] - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2]) * leng / sp.duration 
+        + (Alpha[1] * P_a[1] * (Alpha[2] + Alpha[3]) 
+        + Alpha[2] * P_a[2] * (Alpha[1] + Alpha[3]) 
+        + Alpha[3] * P_a[3] * (Alpha[1] + Alpha[2])) 
+        * leng / sp.duration) / leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio;
+        
+       a = -(A^3)/27 + -C/2 + A*B/6;
+       b = B/3 + -(A^2)/9;
+       
+       s_1 = -A/3 + 2 * sqrt(-b) * cos(acos(a/(-b)^(3/2))/3);
+       s_2 = -A/3 + 2 * sqrt(-b) * cos((acos(a/(-b)^(3/2) )+ 2pi)/3);
+       s_3 = -A/3 + 2 * sqrt(-b) * cos((acos(a/(-b)^(3/2) )- 2pi)/3);
+       
+       M = -(( 1- sp.loss_ratio / sp.expense_ratio) * Alpha[1] * Alpha[2] * Alpha[3]) / (s_1 * s_2 * s_3);
+       p = 1 / ((s_2 - s_1) * (s_3 - s_2))) 
+       * ((1- sp.loss_ratio / sp.expense_ratio) 
+       * (-s_2 * (Alpha[1] + Alpha[2] + Alpha[3]) 
+       - s_2^2 - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2])) 
+       + s_1 * s_3 * M);
+       N = 1/(s_3 - s_1) * (-(1- sp.loss_ratio / sp.expense_ratio) 
+       * (Alpha[1] + Alpha[2] + Alpha[3]) - M * s_3 - (s_1 + s_2) 
+       * (1- sp.loss_ratio / sp.expense_ratio) - (s_3-s_2) * p);
+       q = (1- sp.loss_ratio / sp.expense_ratio) - M - N - p;
+       
 #Gamma Distribution Fitting by MLE
 a = 0.5/(log(mean(claims_data)) - mean(log(claims_data)));
 b = mean(claims_data)/a;
