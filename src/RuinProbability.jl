@@ -5,7 +5,7 @@ module RuinProbability
        using Gadfly;
        using Polynomial;
        
-       export surplusprocess, 
+       export SurplusProcess, 
               SPExp, 
               SPMixExp, 
               SPFG, 
