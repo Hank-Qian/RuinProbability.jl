@@ -15,22 +15,9 @@ function PlotSP(sp::SurplusProcess)
               Alpha[n] = EMfit(sp.claims_data)[2][n];
               P_a[n] = EMfit(sp.claims_data)[1][n];
        end;
-       A = (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio
-        * (Alpha[1] + Alpha[2] + Alpha[3]) - leng / sp.duration) 
-        / leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio ;
-        
-       B = (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio
-        * (Alpha[1] * Alpha[2] + Alpha[3] * Alpha[2] + Alpha[1] * Alpha[3])
-        - (Alpha[1] + Alpha[2] + Alpha[3]) * leng / sp.duration 
-        + (Alpha[1] * P_a[1] + Alpha[2] * P_a[2] + Alpha[3] * P_a[3]) * leng / sp.duration) 
-        / leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio;
-        
-       C = (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio
-        * Alpha[1] * Alpha[2] * Alpha[3] - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2]) * leng / sp.duration 
-        + (Alpha[1] * P_a[1] * (Alpha[2] + Alpha[3]) 
-        + Alpha[2] * P_a[2] * (Alpha[1] + Alpha[3]) 
-        + Alpha[3] * P_a[3] * (Alpha[1] + Alpha[2])) 
-        * leng / sp.duration) / leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio;
+       A = (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio * (Alpha[1] + Alpha[2] + Alpha[3]) - leng / sp.duration) / leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio ;
+       B = (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio * (Alpha[1] * Alpha[2] + Alpha[3] * Alpha[2] + Alpha[1] * Alpha[3]) - (Alpha[1] + Alpha[2] + Alpha[3]) * leng / sp.duration + (Alpha[1] * P_a[1] + Alpha[2] * P_a[2] + Alpha[3] * P_a[3]) * leng / sp.duration) / leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio;
+       C = (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio * Alpha[1] * Alpha[2] * Alpha[3] - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2]) * leng / sp.duration + (Alpha[1] * P_a[1] * (Alpha[2] + Alpha[3]) + Alpha[2] * P_a[2] * (Alpha[1] + Alpha[3]) + Alpha[3] * P_a[3] * (Alpha[1] + Alpha[2])) * leng / sp.duration) / leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio;
         
        a = -(A^3)/27 + -C/2 + A*B/6;
        b = B/3 + -(A^2)/9;
@@ -40,14 +27,8 @@ function PlotSP(sp::SurplusProcess)
        s_3 = -A/3 + 2 * sqrt(-b) * cos((acos(a/(-b)^(3/2) )- 2pi)/3);
        
        M = -(( 1- sp.loss_ratio / sp.expense_ratio) * Alpha[1] * Alpha[2] * Alpha[3]) / (s_1 * s_2 * s_3);
-       p = 1 / ((s_2 - s_1) * (s_3 - s_2))) 
-       * ((1- sp.loss_ratio / sp.expense_ratio) 
-       * (-s_2 * (Alpha[1] + Alpha[2] + Alpha[3]) 
-       - s_2^2 - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2])) 
-       + s_1 * s_3 * M);
-       N = 1/(s_3 - s_1) * (-(1- sp.loss_ratio / sp.expense_ratio) 
-       * (Alpha[1] + Alpha[2] + Alpha[3]) - M * s_3 - (s_1 + s_2) 
-       * (1- sp.loss_ratio / sp.expense_ratio) - (s_3-s_2) * p);
+       p = 1 / ((s_2 - s_1) * (s_3 - s_2))) * ((1- sp.loss_ratio / sp.expense_ratio) * (-s_2 * (Alpha[1] + Alpha[2] + Alpha[3]) - s_2^2 - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2])) + s_1 * s_3 * M);
+       N = 1/(s_3 - s_1) * (-(1- sp.loss_ratio / sp.expense_ratio) * (Alpha[1] + Alpha[2] + Alpha[3]) - M * s_3 - (s_1 + s_2) * (1- sp.loss_ratio / sp.expense_ratio) - (s_3-s_2) * p);
        q = (1- sp.loss_ratio / sp.expense_ratio) - M - N - p;
        
        #Gamma Distribution Fitting by MLE
@@ -108,14 +89,9 @@ function PlotSP(sp::SurplusProcess)
        end;
        
        for i=1:1000;
-	       spe = 1 - (1 - sp.loss_ratio / sp.expense_ratio) * leng / sp.duration 
-		   * exp(-(1/ aver- leng / sp.duration / ( leng / sp.duration * aver 
-		   * sp.expense_ratio / sp.loss_ratio) * u[i] ) 
-		   / (1 / aver * leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio - leng / sp.duration);
-	       spm[i]= 1 + N * exp(s_1 * u[i]) 
-		          + p * exp( s_2 * u[i]) 
-		          + q* exp(s_3 * u[i]);
-	       spf[i]= exp(-1 / b * u[i]) * u[i]^((1-n)/n) * sumpart[i];
+	       spe = 1 - (1 - sp.loss_ratio / sp.expense_ratio) * leng / sp.duration * exp(-(1/ aver- leng / sp.duration / ( leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio) * u[i] ) / (1 / aver * leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio - leng / sp.duration);
+	       spm[i]= 1 + N * exp(s_1 * u[i]) + p * exp( s_2 * u[i]) + q* exp(s_3 * u[i]);
+	       spf[i]= exp(-1 / b * u[i]) * u[i]^((1-n) / n) * sumpart[i];
        end
        
        Dataa=DataFrames.DataFrame(X_1=spe,X_2=spm, X_3=spf,Y=u);
