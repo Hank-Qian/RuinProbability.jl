@@ -21,7 +21,7 @@ function SPMixExp(sp::SurplusProcess)
        s_3 = -A/3 + 2 * sqrt(-b) * cos((acos(a/(-b)^(3/2) )- 2pi)/3);
        
        M = -(( 1- sp.loss_ratio / sp.expense_ratio) * Alpha[1] * Alpha[2] * Alpha[3]) / (s_1 * s_2 * s_3);
-       p = 1 / ((s_2 - s_1) * (s_3 - s_2))) * ((1- sp.loss_ratio / sp.expense_ratio) * (-s_2 * (Alpha[1] + Alpha[2] + Alpha[3]) - s_2^2 - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2])) + s_1 * s_3 * M);
+       p = 1 / ((s_2 - s_1) * (s_3 - s_2)) * ((1- sp.loss_ratio / sp.expense_ratio) * (-s_2 * (Alpha[1] + Alpha[2] + Alpha[3]) - s_2^2 - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2])) + s_1 * s_3 * M);
        N = 1/(s_3 - s_1) * (-(1- sp.loss_ratio / sp.expense_ratio) * (Alpha[1] + Alpha[2] + Alpha[3]) - M * s_3 - (s_1 + s_2) * (1- sp.loss_ratio / sp.expense_ratio) - (s_3-s_2) * p);
        q = (1- sp.loss_ratio / sp.expense_ratio) - M - N - p;
        sm = 1 + N * exp(s_1 * sp.initial_capital) + p * exp( s_2 * sp.initial_capital) + q* exp(s_3 * sp.initial_capital);
