@@ -1,9 +1,9 @@
 type SurplusProcess
-       $initial_capital::Number;
-       $claims_data::Array{Float64,1};
-       $loss_ratio::Float64;
-       $expense_ratio::Float64;
-       $duration::Number;
+       initial_capital::Number;
+       claims_data::Array{Float64,1};
+       loss_ratio::Float64;
+       expense_ratio::Float64;
+       duration::Number;
 end
 #-------------------------------------------------------------------------------
 # User needs to input some basic information about the company.
