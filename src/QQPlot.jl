@@ -30,14 +30,8 @@ function QQPlot(claims_data)
        F_d=zeros(leng);
        
        for i=1:leng;
-              F[i] = P_a[1] *(1 - exp(-Alpha[1] * QQ_3[i]))
-              	   + P_a[2] * (1 - exp(-Alpha[2] * QQ_3[i])) 
-              	   + P_a[3] * (1 - exp(-Alpha[3] * QQ_3 [i])) 
-              	   -percentile[i];
-              	   
-              F_d[i] = P_a[1] * Alpha[1]  * exp(-Alpha[1] * QQ_3[i]) 
-                     + P_a[2] * Alpha[2]  * exp(-Alpha[2] * QQ_3 [i]) 
-                     + P_a[3] * Alpha[3]  * exp(-Alpha[3] * QQ_3 [i]);
+              F[i] = P_a[1] *(1 - exp(-Alpha[1] * QQ_3[i])) + P_a[2] * (1 - exp(-Alpha[2] * QQ_3[i])) + P_a[3] * (1 - exp(-Alpha[3] * QQ_3 [i])) -percentile[i];
+              F_d[i] = P_a[1] * Alpha[1]  * exp(-Alpha[1] * QQ_3[i]) + P_a[2] * Alpha[2]  * exp(-Alpha[2] * QQ_3 [i]) + P_a[3] * Alpha[3]  * exp(-Alpha[3] * QQ_3 [i]);
        end;
        
        for n=1:10;
@@ -45,14 +39,8 @@ function QQPlot(claims_data)
                 	QQ_3[i]=QQ_3[i] - F[i]/F_d[i];
                 end;
                 for i=1:leng;
-	                F[i] = P_a[1] *(1 - exp(-Alpha[1] * QQ_3[i])) 
-	                     + P_a[2] * (1 - exp(-Alpha[2] * QQ_3[i])) 
-	                     + P_a[3] * (1 - exp(-Alpha[3] * QQ_3 [i])) 
-	                     - percentile[i];
-	                     
-	                F_d[i] = P_a[1] * Alpha[1]  * exp(-Alpha[1] * QQ_3[i]) 
-	                       + P_a[2] * Alpha[2]  * exp(-Alpha[2] * QQ_3 [i]) 
-	                       + P_a[3] * Alpha[3]  * exp(-Alpha[3] * QQ_3 [i]);
+	                F[i] = P_a[1] *(1 - exp(-Alpha[1] * QQ_3[i])) + P_a[2] * (1 - exp(-Alpha[2] * QQ_3[i])) + P_a[3] * (1 - exp(-Alpha[3] * QQ_3 [i])) - percentile[i];
+	                F_d[i] = P_a[1] * Alpha[1]  * exp(-Alpha[1] * QQ_3[i]) + P_a[2] * Alpha[2]  * exp(-Alpha[2] * QQ_3 [i]) + P_a[3] * Alpha[3]  * exp(-Alpha[3] * QQ_3 [i]);
 	        end;
         end ;
         
