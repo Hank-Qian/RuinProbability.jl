@@ -1,8 +1,8 @@
-function SPExp(sp::SurplusProcess)
-       leng = length(sp.claims_data);
-       aver = mean(sp.claims_data);
+function SPExp(SurplusProcess)
+       leng = length(SurplusProcess.claims_data);
+       aver = mean(SurplusProcess.claims_data);
        
-       s = 1 - (1 - sp.loss_ratio / sp.expense_ratio) * leng / sp.duration * exp(-(1 / aver - leng / sp.duration / ( leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio) * sp.initial_capital ) / (1 / aver * leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio - leng / sp.duration));
+       s = 1 - (1 - SurplusProcess.loss_ratio / SurplusProcess.expense_ratio) * leng / SurplusProcess.duration * exp(-(1 / aver - leng / SurplusProcess.duration / ( leng / SurplusProcess.duration * aver * SurplusProcess.expense_ratio / SurplusProcess.loss_ratio) * SurplusProcess.initial_capital ) / (1 / aver * leng / SurplusProcess.duration * aver * SurplusProcess.expense_ratio / SurplusProcess.loss_ratio - leng / SurplusProcess.duration));
 end
 #-------------------------------------------------------------------------------
 # This result is generated from surplus process with exponential claims distribution and 
