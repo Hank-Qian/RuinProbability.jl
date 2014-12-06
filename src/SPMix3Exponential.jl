@@ -41,7 +41,9 @@ function SPMixExp(sp::SurplusProcess)
        * (Alpha[1] + Alpha[2] + Alpha[3]) - M * s_3 - (s_1 + s_2) 
        * (1- sp.loss_ratio / sp.expense_ratio) - (s_3-s_2) * p);
        q = (1- sp.loss_ratio / sp.expense_ratio) - M - N - p;
-       sm = 1 + N * exp(s_1 * sp.initial_capital) + p * exp( s_2 * sp.initial_capital) + q* exp(s_3 * sp.initial_capital);
+       sm = 1 + N * exp(s_1 * sp.initial_capital) 
+          + p * exp( s_2 * sp.initial_capital) 
+          + q* exp(s_3 * sp.initial_capital);
 end
 #-------------------------------------------------------------------------------
 # This result is generated from surplus process with mixture three exponential claims distribution and claims size is distributed by poison process. The function is produced by Laplace transform and inverse Laplace transform from IE to IDE to the final result.
