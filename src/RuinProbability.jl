@@ -28,7 +28,7 @@ module RuinProbability
 # expense_rati=0.2
 # duration=10 ( the unit of duration is year)
 #-------------------------------------------------------------------------------
-       include("surplusprocess.jl")
+       include("SurplusProcess.jl")
        include("SPExponential.jl")
        include("SPMix3Exponential.jl")
        include("QQPlot.jl")
