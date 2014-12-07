@@ -1,5 +1,4 @@
-function SPExp(SurplusProcess)
-sp = SurplusProcess;
+function SPExp(sp::SurplusProcess)
        leng = length(sp.claims_data);
        aver = mean(sp.claims_data);
        
