@@ -1,5 +1,4 @@
-function SPMixExp(SurplusProcess) 
-sp = SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration);
+function SPMixExp(sp::SurplusProcess) 
        Alpha = zeros(3);
 	P_a = zeros(3);
 	
