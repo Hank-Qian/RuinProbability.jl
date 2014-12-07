@@ -6,7 +6,7 @@ type SurplusProcess
        duration::Number;
 end
 
-function sp(SurpluPprocess)
+function sp(SurplusProcess)
 SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration)
 end
 #-------------------------------------------------------------------------------
