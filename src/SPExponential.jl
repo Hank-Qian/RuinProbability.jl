@@ -1,5 +1,5 @@
 function SPExp(SurplusProcess)
-sp = SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration);
+sp = SurplusProcess;
        leng = length(sp.claims_data);
        aver = mean(sp.claims_data);
        
