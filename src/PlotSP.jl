@@ -1,4 +1,5 @@
 function PlotSP(sp::SurplusProcess)
+sp = SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration)
 	ppp=5000;
 	u=zeros(1000);
 	spe=zeros(1000);
