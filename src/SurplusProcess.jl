@@ -6,9 +6,6 @@ type SurplusProcess
        duration::Number;
 end
 
-function sp(SurplusProcess)
-SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration)
-end
 #-------------------------------------------------------------------------------
 # User needs to input some basic information about the company.
 # For example, user needs to type:
