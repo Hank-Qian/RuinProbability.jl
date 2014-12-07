@@ -89,7 +89,7 @@ function PlotSP(sp::SurplusProcess)
        end;
        
        for i=1:1000;
-	       spe = 1 - (1 - sp.loss_ratio / sp.expense_ratio) * leng / sp.duration * exp(-(1/ aver- leng / sp.duration / ( leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio) * u[i]） / (1 / aver * leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio - leng / sp.duration);
+	       spe = 1 - (1 - sp.loss_ratio / sp.expense_ratio) * leng / sp.duration * exp(-(1/ aver- leng / sp.duration / ( leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio)) * u[i]） / (1 / aver * leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio - leng / sp.duration);
 	       spm[i]= 1 + N * exp(s_1 * u[i]) + p * exp( s_2 * u[i]) + q* exp(s_3 * u[i]);
 	       spf[i]= exp(-1 / b * u[i]) * u[i]^((1-n) / n) * sumpart[i];
        end
