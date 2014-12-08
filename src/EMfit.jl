@@ -11,10 +11,7 @@ leng=length(claims_data)
        for n = 1:300
               for j =1:3
                      for i =1:leng
-                            w[i,j] = P[j] * (1 / Theta[1,j]) * exp(-claims_data[i] / Theta[1,j]) 
-                                   / (P[1] * (1 / Theta[1,1]) * exp(-claims_data[i] / Theta[1,1]) 
-                                   + P[2] * (1 / Theta[1,2]) * exp(-claims_data[i] / Theta[1,2]) 
-                                   + P[3] * (1 / Theta[1,3]) * exp (-claims_data[i] / Theta[1,3]))
+                            w[i,j] = P[j] * (1 / Theta[1,j]) * exp(-claims_data[i] / Theta[1,j]) / (P[1] * (1 / Theta[1,1]) * exp(-claims_data[i] / Theta[1,1]) + P[2] * (1 / Theta[1,2]) * exp(-claims_data[i] / Theta[1,2]) + P[3] * (1 / Theta[1,3]) * exp (-claims_data[i] / Theta[1,3]))
                      end
               end
               
