@@ -1,12 +1,12 @@
-function QQPlot(claims_data)
+function QQPlot(claims_data, nexp::Int64)
        a = 0.5/(log(mean(claims_data)) - mean(log(claims_data)));
        b = mean(claims_data)/a;
        leng = length(claims_data);
        aver = mean(claims_data);
-       Alpha = zeros(3);
-       P_a = zeros(3);
+       Alpha = zeros(nexp);
+       P_a = zeros(nexp);
        
-       for n = 1:3;
+       for n = 1:nexp;
               Alpha[n] = EMfit(claims_data)[2][n];
               P_a[n] = EMfit(claims_data)[1][n];
        end;
@@ -25,38 +25,49 @@ function QQPlot(claims_data)
        end;
        
        w=sort(claims_data);
-       QQ_3=zeros(leng);
+       QQ_m=zeros(leng);
        F=zeros(leng);
        F_d=zeros(leng);
-       
-       for i=1:leng;
-              F[i] = P_a[1] *(1 - exp(-Alpha[1] * QQ_3[i])) + P_a[2] * (1 - exp(-Alpha[2] * QQ_3[i])) + P_a[3] * (1 - exp(-Alpha[3] * QQ_3 [i])) -percentile[i];
-              F_d[i] = P_a[1] * Alpha[1]  * exp(-Alpha[1] * QQ_3[i]) + P_a[2] * Alpha[2]  * exp(-Alpha[2] * QQ_3 [i]) + P_a[3] * Alpha[3]  * exp(-Alpha[3] * QQ_3 [i]);
+	sum1=0;
+	sum2=0;
+	for i=1:leng
+	sum1=0;
+	sum2=0;
+	for j=1:nexp
+	sum1 = P_a[j] *(1 - exp(-Alpha[j] * QQ_m[i])) + sum1;
+	sum2 = P_a[j] * Alpha[j] * exp(-Alpha[j] * QQ_m[i]) +sum2
+	end
+              F[i] = sum1-percentile[i];
+              F_d[i] = sum2
        end;
        
        for n=1:10;
        		for i=1:leng;
-                	QQ_3[i]=QQ_3[i] - F[i]/F_d[i];
+                	QQ_m[i]=QQ_m[i] - F[i]/F_d[i];
                 end;
                 for i=1:leng;
-	                F[i] = P_a[1] *(1 - exp(-Alpha[1] * QQ_3[i])) + P_a[2] * (1 - exp(-Alpha[2] * QQ_3[i])) + P_a[3] * (1 - exp(-Alpha[3] * QQ_3 [i])) - percentile[i];
-	                F_d[i] = P_a[1] * Alpha[1]  * exp(-Alpha[1] * QQ_3[i]) + P_a[2] * Alpha[2]  * exp(-Alpha[2] * QQ_3 [i]) + P_a[3] * Alpha[3]  * exp(-Alpha[3] * QQ_3 [i]);
-	        end;
-        end ;
-        
-	S1=zeros(leng);
+	sum1=0;
+	sum2=0;
+	for j=1:nexp
+	sum1 = P_a[j] *(1 - exp(-Alpha[j] * QQ_m[i])) + sum1;
+	sum2 = P_a[j] * Alpha[j] * exp(-Alpha[j] * QQ_m[i]) +sum2
+	end
+              F[i] = sum1-percentile[i];
+              F_d[i] = sum2
+       end;
+       end ;
+       	S1=zeros(leng);
 	S2=zeros(leng);
-	S3=zeros(leng-1);
+	S3=zeros(leng);
 	
       for i=1:leng-1
         S1[i]=(QQ_1[i]-w[i])^2+S1[i]
-        S3[i]=(QQ_3[i]-w[i])^2+S2[i]
-        S2[i]=(QQ_FG[i]-w[i])^2+S3[i]
-       end
+        S2[i]=(QQ_m[i]-w[i])^2+S2[i]
+        S3[i]=(QQ_FG[i]-w[i])^2+S3[i]
+       end       
+       Data=DataFrames.DataFrame(X_1=QQ_1,X_2=QQ_m,X_3=QQ_FG, Y=w);
        
-       Data=DataFrames.DataFrame(X_1=QQ_1,X_2=QQ_3,X_3=QQ_FG, Y=w);
-       
-       Gadfly.plot(Data, Gadfly.layer(x="X_1", y="Y", Gadfly.Geom.point, Gadfly.Theme(default_color=Gadfly.color("red"))
+       CCC=Gadfly.plot(Data, Gadfly.layer(x="X_1", y="Y", Gadfly.Geom.point, Gadfly.Theme(default_color=Gadfly.color("red"))
        ),Gadfly.layer(x="X_2", y="Y", Gadfly.Geom.point, Gadfly.Theme(default_color=Gadfly.color("blue"))
        ),Gadfly.layer(x="X_3", y="Y", Gadfly.Geom.point, Gadfly.Theme(default_color=Gadfly.color("green"))
        ),Gadfly.layer(x="Y", y="Y", Gadfly.Geom.line, Gadfly.Theme(default_color=Gadfly.color("black"))),  Gadfly.Guide.xlabel("Simulation"), Gadfly.Guide.ylabel("Real Data"), Gadfly.Guide.title("QQ-Plot"));
