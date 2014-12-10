@@ -11,16 +11,16 @@ function EMfit(claims_data,n::Number)
        De=0;
        
        for n = 1:300;
-              for j =1:nexp;
-                     for i =1:leng;
+              for j = 1:nexp;
+                     for i = 1:leng;
                      De=0;
-                            for z=1:nexp
-                            De=P[z] * (1 / Theta[z]) * exp(-claims_data[i] / Theta[z]) +De
+                            for z = 1:nexp
+                            De = P[z] * (1 / Theta[z]) * exp(-claims_data[i] / Theta[z]) + De
                             end;
                      w[i,j] = P[j] * (1 / Theta[j]) * exp(-claims_data[i] / Theta[j]) / De
                      end;
               end;
-              for m=1:nexp;
+              for m = 1:nexp;
                      for k=1:leng;
                      Q[k,m] = w[k,m] * claims_data[k];
                      A[k,m] = w[k,m];
