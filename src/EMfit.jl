@@ -29,7 +29,7 @@ function EMfit(claims_data,nexp::Number)
               P[m] = sum(A[:,m]) / leng;
               end;
        end;
-       p_p=0;
+       P_P=0;
        for i=1:nexp-1
        P_P=P_P+P[i]
        end
