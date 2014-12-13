@@ -30,7 +30,7 @@ module RuinProbability
 #-------------------------------------------------------------------------------
        include("SurplusProcess.jl")
        include("SPExponential.jl")
-       include("SPMix3Exponential.jl")
+       include("SPMixExponential.jl")
        include("QQPlot.jl")
        include("EMfit.jl")
        include("SPFractionGamma.jl")
