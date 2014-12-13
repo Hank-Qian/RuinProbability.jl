@@ -1,4 +1,4 @@
-function SPMixExp(sp::SurplusProcess) 
+function SPMixExp(sp::SurplusProcess,nexp::Int64) 
        Alpha = zeros(3);
 	P_a = zeros(3);
 	
