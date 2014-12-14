@@ -9,9 +9,9 @@ function SPMixExp(sp::SurplusProcess,nexp::Int64)
               Alpha[n] = AA[2][n];
               P_a[n] = AA[1][n];
        end;
-       A = (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio * (Alpha[1] + Alpha[2] + Alpha[3]) - leng / sp.duration) / leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio ;
-       B = (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio * (Alpha[1] * Alpha[2] + Alpha[3] * Alpha[2] + Alpha[1] * Alpha[3]) - (Alpha[1] + Alpha[2] + Alpha[3]) * leng / sp.duration + (Alpha[1] * P_a[1] + Alpha[2] * P_a[2] + Alpha[3] * P_a[3]) * leng / sp.duration) / leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio;
-       C = (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio * Alpha[1] * Alpha[2] * Alpha[3] - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2]) * leng / sp.duration + (Alpha[1] * P_a[1] * (Alpha[2] + Alpha[3]) + Alpha[2] * P_a[2] * (Alpha[1] + Alpha[3]) + Alpha[3] * P_a[3] * (Alpha[1] + Alpha[2])) * leng / sp.duration) / leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio;
+       A = ((leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio) * (Alpha[1] + Alpha[2] + Alpha[3]) – leng / sp.duration) / (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio) ;
+       B = ((leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio) * (Alpha[1] * Alpha[2] + Alpha[3] * Alpha[2] + Alpha[1] * Alpha[3]) - (Alpha[1] + Alpha[2] + Alpha[3]) * leng / sp.duration + (Alpha[1] * P_a[1] + Alpha[2] * P_a[2] + Alpha[3] * P_a[3]) * leng / sp.duration) / (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio);
+       C = ((leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio) * Alpha[1] * Alpha[2] * Alpha[3] - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2]) * leng / sp.duration + (Alpha[1] * P_a[1] * (Alpha[2] + Alpha[3]) + Alpha[2] * P_a[2] * (Alpha[1] + Alpha[3]) + Alpha[3] * P_a[3] * (Alpha[1] + Alpha[2])) * leng / sp.duration) / (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio);
         
        a = -(A^3)/27 + -C/2 + A*B/6;
        b = B/3 + -(A^2)/9;
