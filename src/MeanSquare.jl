@@ -23,7 +23,15 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
             QQ_1[i]=quantile(Distributions.Exponential(aver),percentile[i]);
             QQ_FG[i]=quantile(Distributions.Gamma(a,b),percentile[i]);
        end;
-       
+       	S1=0;
+	S2=0;
+	S3=0;
+       for i=1:leng-1;
+        S1=(QQ_1[i]-w[i])^2+S1;
+        S3=(QQ_FG[i]-w[i])^2+S3;
+        end
+        Exp=S1/(leng-1);
+        FG=S3/(leng-1);
        w=sort(sp.claims_data);
        QQ_m=QQ_1;
        F=zeros(leng);
@@ -56,18 +64,12 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
 		        F_d[i] = sum2;
 	        end;
         end;
-       	S1=0;
-	S2=0;
-	S3=0;
+       
 	
       for i=1:leng-1;
-        S1=(QQ_1[i]-w[i])^2+S1;
         S2=(QQ_m[i]-w[i])^2+S2;
-        S3=(QQ_FG[i]-w[i])^2+S3;
        end;
-       Exp=S1/(leng-1);
        MixExp=S2/(leng-1);
-       FG=S3/(leng-1);
        ModelName=["Exp", "MixExp", "FG"];
        Values=[Exp, MixExp, FG];
        Data=DataFrames.DataFrame(Model=ModelName, MeanSquare=Values)
