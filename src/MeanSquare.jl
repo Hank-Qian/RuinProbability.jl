@@ -13,7 +13,7 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
        
        percentile = rand(leng-1);
        for i=1:leng-1;
-            percentile[i]=i/leng-1;
+            percentile[i]=i/(leng-1);
        end;
        
        QQ_1=rand(leng-1); 
