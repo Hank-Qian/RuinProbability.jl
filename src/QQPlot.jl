@@ -24,7 +24,7 @@ function QQPlot(sp::SurplusProcess, nexp::Int64)
             QQ_FG[i]=quantile(Distributions.Gamma(a,b),percentile[i]);
        end;
        
-       w=sort(claims_data);
+       w=sort(sp.claims_data);
        QQ_m=zeros(leng);
        F=zeros(leng);
        F_d=zeros(leng);
