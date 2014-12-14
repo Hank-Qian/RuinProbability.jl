@@ -11,26 +11,26 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
               P_a[n] = AA[1][n];
        end;
        
-       percentile = rand(leng-1);
+       percentile = rand(leng);
        for i=1:leng-1;
-            percentile[i]=i/(leng-1);
+            percentile[i]=i/leng;
        end;
        
-       QQ_1=rand(leng-1); 
-       QQ_FG=rand(leng-1);
-       for i=1:leng-1;
+       QQ_1=rand(leng); 
+       QQ_FG=rand(leng);
+       for i=1:leng;
        
             QQ_1[i]=quantile(Distributions.Exponential(aver),percentile[i]);
             QQ_FG[i]=quantile(Distributions.Gamma(a,b),percentile[i]);
        end;
        
        w=sort(sp.claims_data);
-       QQ_m=zeros(leng-1);
-       F=zeros(leng-1);
-       F_d=zeros(leng-1);
+       QQ_m=zeros(leng);
+       F=zeros(leng);
+       F_d=zeros(leng);
 	sum1=0;
 	sum2=0;
-	for i=1:leng-1
+	for i=1:leng
 		sum1=0;
 		sum2=0;
 		for j=1:nexp
@@ -42,10 +42,10 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
         end;
        
         for n=1:20;
-	       	for i=1:leng-1;
+	       	for i=1:leng;
 		        QQ_m[i]=QQ_m[i] - F[i]/F_d[i];
 	        end;
-	        for i=1:leng-1;
+	        for i=1:leng;
 			sum1=0;
 			sum2=0;
 			for j=1:nexp
