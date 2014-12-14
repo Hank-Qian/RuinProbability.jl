@@ -25,7 +25,7 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
        end;
        
        w=sort(sp.claims_data);
-       QQ_m=zeros(leng);
+       QQ_m=QQ_1;
        F=zeros(leng);
        F_d=zeros(leng);
 	sum1=0;
