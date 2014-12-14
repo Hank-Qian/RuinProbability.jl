@@ -8,12 +8,12 @@ function PlotSP(sp::SurplusProcess)
 	Alpha = zeros(3);
 	P_a = zeros(3);
 	
-       leng = length(sp.claims_data);
-       aver = mean(sp.claims_data);
-       
+       leng = length(sp.claims_data.nexp);
+       aver = mean(sp.claims_data,nexp);
+       AA=EMfit(sp.claims_data,nexp);
        for n=1:3;
-              Alpha[n] = EMfit(sp.claims_data)[2][n];
-              P_a[n] = EMfit(sp.claims_data)[1][n];
+              Alpha[n] = AA[2][n];
+              P_a[n] = AA[1][n];
        end;
        A = (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio * (Alpha[1] + Alpha[2] + Alpha[3]) - leng / sp.duration) / leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio ;
        B = (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio * (Alpha[1] * Alpha[2] + Alpha[3] * Alpha[2] + Alpha[1] * Alpha[3]) - (Alpha[1] + Alpha[2] + Alpha[3]) * leng / sp.duration + (Alpha[1] * P_a[1] + Alpha[2] * P_a[2] + Alpha[3] * P_a[3]) * leng / sp.duration) / leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio;
