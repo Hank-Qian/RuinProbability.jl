@@ -5,13 +5,13 @@ function PlotSP(sp::SurplusProcess,nexp::Int64)
 	spm=zeros(1000);
 	spf=zeros(1000);
 	sumpart=zeros(1000);
-	Alpha = zeros(3);
-	P_a = zeros(3);
+	Alpha = zeros(nexp);
+	P_a = zeros(nexp);
 	
        leng = length(sp.claims_data.nexp);
        aver = mean(sp.claims_data,nexp);
        AA=EMfit(sp.claims_data,nexp);
-       for n=1:3;
+       for n=1:nexp;
               Alpha[n] = AA[2][n];
               P_a[n] = AA[1][n];
        end;
