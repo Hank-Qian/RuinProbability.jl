@@ -5,6 +5,7 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
        aver = mean(sp.claims_data);
        Alpha = zeros(nexp);
        P_a = zeros(nexp);
+       w=sort(sp.claims_data);
        AA=EMfit(sp.claims_data,nexp);
        for n=1:nexp;
               Alpha[n] = AA[2][n];
@@ -32,7 +33,7 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
         end
         Exp=S1/(leng-1);
         FG=S3/(leng-1);
-       w=sort(sp.claims_data);
+    
        QQ_m=QQ_1;
        F=zeros(leng);
        F_d=zeros(leng);
