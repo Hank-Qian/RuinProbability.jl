@@ -83,10 +83,11 @@ function PlotSP(sp::SurplusProcess,nexp::Int64)
        
        #Sum part in fractional gamma distribution ruin probability
        sumpart=0;
-       for i = 1:(m+n);
-	       sumpart = real(sumpart + Mk[i] * MiLe(Sk[i] * sp.initial_capital^(1 / n)));
-       end;
-       
+       for j=1:1000;
+	       for i = 1:(m+n);
+	       		sumpart[j] = real(sumpart + Mk[i] * MiLe(Sk[i] * u[j]^(1 / n)));
+	       end;
+       end
        for i=1:1000;
 	       spe[i] = 1 - (1 - sp.loss_ratio / sp.expense_ratio) * leng / sp.duration * exp(-(1/ aver- leng / sp.duration / ( leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio)) * u[i]) / (1 / aver * leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio - leng / sp.duration);
 	       spm[i]= 1 + N * exp(s_1 * u[i]) + p * exp( s_2 * u[i]) + q* exp(s_3 * u[i]);
