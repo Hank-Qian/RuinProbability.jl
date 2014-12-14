@@ -11,7 +11,8 @@ module RuinProbability
               SPFG, 
               QQPlot,  
               EMfit, 
-              PlotSP
+              PlotSP,
+              MeanSquare
 
 #-------------------------------------------------------------------------------
 # SPExp: survival probability under exponential distribution
