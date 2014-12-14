@@ -68,10 +68,9 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
        Exp=sum(S1)/(leng-1);
        MixExp=sum(S2)/(leng-1);
        FG=sum(S3)/(leng-1);
-       
-      return
-      println( "Exp = $Exp")
-      println( "MixExp = $MixExp")
-      println( "FG = $FG")
-      
+       ModelName=["Exp", "MixExp", "FG"];
+       Values=[Exp, MixExp, FG];
+       Data=DataFrames.DataFrame(X_1=ModelName,X_2=Values);
+       return
+       Data
        end
