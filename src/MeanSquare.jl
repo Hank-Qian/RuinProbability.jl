@@ -69,6 +69,7 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
        MixExp=sum(S2)/(leng-1);
        FG=sum(S3)/(leng-1);
        
+      return
       println( "Exp = $Exp")
       println( "MixExp = $MixExp")
       println( "FG = $FG")
