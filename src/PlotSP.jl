@@ -48,8 +48,7 @@ function PlotSP(sp::SurplusProcess,nexp::Int64)
 	       end;
        end;
        #Calculate Sk roots from special equation
-       aver = mean(sp.claims_data);
-       leng = length(sp.claims_data);
+     
        poli = zeros(m+n+1);
        poli[1] = leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio;
        poli[n+1] = -(leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio * (1 / b) + leng / sp.duration);
