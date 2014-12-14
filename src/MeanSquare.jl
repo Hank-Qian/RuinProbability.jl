@@ -11,26 +11,26 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
               P_a[n] = AA[1][n];
        end;
        
-       percentile = rand(leng);
-       for i=1:leng;
-            percentile[i]=i/leng;
+       percentile = rand(leng-1);
+       for i=1:leng-1;
+            percentile[i]=i/leng-1;
        end;
        
-       QQ_1=rand(leng); 
-       QQ_FG=rand(leng);
-       for i=1:leng;
+       QQ_1=rand(leng-1); 
+       QQ_FG=rand(leng-1);
+       for i=1:leng-1;
        
             QQ_1[i]=quantile(Distributions.Exponential(aver),percentile[i]);
             QQ_FG[i]=quantile(Distributions.Gamma(a,b),percentile[i]);
        end;
        
        w=sort(sp.claims_data);
-       QQ_m=zeros(leng);
-       F=zeros(leng);
-       F_d=zeros(leng);
+       QQ_m=zeros(leng-1);
+       F=zeros(leng-1);
+       F_d=zeros(leng-1);
 	sum1=0;
 	sum2=0;
-	for i=1:leng
+	for i=1:leng-1
 		sum1=0;
 		sum2=0;
 		for j=1:nexp
@@ -42,10 +42,10 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
         end;
        
         for n=1:20;
-	       	for i=1:leng;
+	       	for i=1:leng-1;
 		        QQ_m[i]=QQ_m[i] - F[i]/F_d[i];
 	        end;
-	        for i=1:leng;
+	        for i=1:leng-1;
 			sum1=0;
 			sum2=0;
 			for j=1:nexp
@@ -56,18 +56,18 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
 		        F_d[i] = sum2;
 	        end;
         end;
-       	S1=zeros(leng);
-	S2=zeros(leng);
-	S3=zeros(leng);
+       	S1=zeros(leng-1);
+	S2=zeros(leng-1);
+	S3=zeros(leng-1);
 	
-      for i=1:leng;
+      for i=1:leng-1;
         S1[i]=(QQ_1[i]-w[i])^2+S1[i];
         S2[i]=(QQ_m[i]-w[i])^2+S2[i];
         S3[i]=(QQ_FG[i]-w[i])^2+S3[i];
        end;
-       Exp=sum(S1)/(leng);
-       MixExp=sum(S2)/(leng);
-       FG=sum(S3)/(leng);
+       Exp=sum(S1)/(leng-1);
+       MixExp=sum(S2)/(leng-1);
+       FG=sum(S3)/(leng-1);
        ModelName=["Exp", "MixExp", "FG"];
        Values=[Exp, MixExp, FG];
        Data=DataFrames.DataFrame(Model=ModelName, MeanSquare=Values)
