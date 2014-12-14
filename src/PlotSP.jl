@@ -1,4 +1,4 @@
-function PlotSP(sp::SurplusProcess,nexp)
+function PlotSP(sp::SurplusProcess,nexp::Int64)
 	ppp=5000;
 	u=zeros(1000);
 	spe=zeros(1000);
