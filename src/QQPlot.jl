@@ -5,10 +5,10 @@ function QQPlot(claims_data, nexp::Int64)
        aver = mean(claims_data);
        Alpha = zeros(nexp);
        P_a = zeros(nexp);
-       
-       for n = 1:nexp;
-              Alpha[n] = EMfit(claims_data)[2][n];
-              P_a[n] = EMfit(claims_data)[1][n];
+       AA=EMfit(sp.claims_data,nexp);
+       for n=1:3;
+              Alpha[n] = AA[2][n];
+              P_a[n] = AA[1][n];
        end;
        
        percentile = rand(leng);
