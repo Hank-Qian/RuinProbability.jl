@@ -8,7 +8,7 @@ function PlotSP(sp::SurplusProcess,nexp::Int64)
 	Alpha = zeros(nexp);
 	P_a = zeros(nexp);
 	
-       leng = length(sp.claims_data.nexp);
+       leng = length(sp.claims_data,nexp);
        aver = mean(sp.claims_data,nexp);
        AA=EMfit(sp.claims_data,nexp);
        for n=1:nexp;
