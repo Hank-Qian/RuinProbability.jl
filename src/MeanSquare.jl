@@ -41,7 +41,7 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
 	        F_d[i] = sum2
         end;
        
-        for n=1:10;
+        for n=1:20;
 	       	for i=1:leng;
 		        QQ_m[i]=QQ_m[i] - F[i]/F_d[i];
 	        end;
