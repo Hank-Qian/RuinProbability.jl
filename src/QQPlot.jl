@@ -1,8 +1,8 @@
-function QQPlot(claims_data, nexp::Int64)
-       a = 0.5/(log(mean(claims_data)) - mean(log(claims_data)));
-       b = mean(claims_data)/a;
-       leng = length(claims_data);
-       aver = mean(claims_data);
+function QQPlot(sp::SurplusProcess, nexp::Int64)
+       a = 0.5/(log(mean(sp.claims_data)) - mean(log(sp.claims_data)));
+       b = mean(sp.claims_data)/a;
+       leng = length(sp.claims_data);
+       aver = mean(sp.claims_data);
        Alpha = zeros(nexp);
        P_a = zeros(nexp);
        AA=EMfit(sp.claims_data,nexp);
