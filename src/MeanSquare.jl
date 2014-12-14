@@ -31,31 +31,31 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
 	sum1=0;
 	sum2=0;
 	for i=1:leng
-	sum1=0;
-	sum2=0;
-	for j=1:nexp
-	sum1 = P_a[j] *(1 - exp(-Alpha[j] * QQ_m[i])) + sum1;
-	sum2 = P_a[j] * Alpha[j] * exp(-Alpha[j] * QQ_m[i]) +sum2
-	end
-              F[i] = sum1-percentile[i];
-              F_d[i] = sum2
-       end;
+		sum1=0;
+		sum2=0;
+		for j=1:nexp
+			sum1 = P_a[j] *(1 - exp(-Alpha[j] * QQ_m[i])) + sum1;
+			sum2 = P_a[j] * Alpha[j] * exp(-Alpha[j] * QQ_m[i]) +sum2;
+		end
+	        F[i] = sum1-percentile[i];
+	        F_d[i] = sum2
+        end;
        
-       for n=1:10;
-       		for i=1:leng;
-                	QQ_m[i]=QQ_m[i] - F[i]/F_d[i];
-                end;
-                for i=1:leng;
-	sum1=0;
-	sum2=0;
-	for j=1:nexp
-	sum1 = P_a[j] *(1 - exp(-Alpha[j] * QQ_m[i])) + sum1;
-	sum2 = P_a[j] * Alpha[j] * exp(-Alpha[j] * QQ_m[i]) +sum2
-	end
-              F[i] = sum1-percentile[i];
-              F_d[i] = sum2
-       end;
-       end ;
+        for n=1:10;
+	       	for i=1:leng;
+		        QQ_m[i]=QQ_m[i] - F[i]/F_d[i];
+	        end;
+	        for i=1:leng;
+			sum1=0;
+			sum2=0;
+			for j=1:nexp
+				sum1 = P_a[j] *(1 - exp(-Alpha[j] * QQ_m[i])) + sum1;
+				sum2 = P_a[j] * Alpha[j] * exp(-Alpha[j] * QQ_m[i]) +sum2;
+			end
+		        F[i] = sum1-percentile[i];
+		        F_d[i] = sum2;
+	        end;
+        end;
        	S1=zeros(leng);
 	S2=zeros(leng);
 	S3=zeros(leng);
