@@ -60,14 +60,14 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
 	S2=0;
 	S3=0;
 	
-      for i=1:leng-1;
+      for i=1:leng-2;
         S1=(QQ_1[i]-w[i])^2+S1;
         S2=(QQ_m[i]-w[i])^2+S2;
         S3=(QQ_FG[i]-w[i])^2+S3;
        end;
-       Exp=S1/(leng-1);
-       MixExp=S2/(leng-1);
-       FG=S3/(leng-1);
+       Exp=S1/(leng-2);
+       MixExp=S2/(leng-2);
+       FG=S3/(leng-2);
        ModelName=["Exp", "MixExp", "FG"];
        Values=[Exp, MixExp, FG];
        Data=DataFrames.DataFrame(Model=ModelName, MeanSquare=Values)
