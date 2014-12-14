@@ -35,6 +35,7 @@ module RuinProbability
        include("EMfit.jl")
        include("SPFractionGamma.jl")
        include("PlotSP.jl")
+       include("MeanSquare.jl")
 
 
 end # module
