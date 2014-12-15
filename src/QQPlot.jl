@@ -57,19 +57,7 @@ function QQPlot(sp::SurplusProcess, nexp::Int64)
               F_d[i] = sum2
        end;
        end ;
-       	S1=zeros(leng);
-	S2=zeros(leng);
-	S3=zeros(leng);
-	
-      for i=1:leng-1
-        S1[i]=(QQ_1[i]-w[i])^2+S1[i]
-        S2[i]=(QQ_m[i]-w[i])^2+S2[i]
-        S3[i]=(QQ_FG[i]-w[i])^2+S3[i]
-       end 
-         
-       sum(S1);
-       sum(S2);
-       sum(S3);
+
        Data=DataFrames.DataFrame(X_1=QQ_1,X_2=QQ_m,X_3=QQ_FG, Y=w);
        
        CCC=Gadfly.plot(Data, Gadfly.layer(x="X_1", y="Y", Gadfly.Geom.point, Gadfly.Theme(default_color=Gadfly.color("red"))
