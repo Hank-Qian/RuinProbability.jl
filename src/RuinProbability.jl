@@ -12,7 +12,8 @@ module RuinProbability
               QQPlot,  
               EMfit, 
               PlotSP,
-              MeanSquare
+              MeanSquare,
+              SimulationExp
 
 #-------------------------------------------------------------------------------
 # SPExp: survival probability under exponential distribution
@@ -37,6 +38,7 @@ module RuinProbability
        include("SPFractionGamma.jl")
        include("PlotSP.jl")
        include("MeanSquare.jl")
+       include("SimulationExp.jl")
 
 
 end # module
