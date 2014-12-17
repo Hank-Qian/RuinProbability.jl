@@ -1,5 +1,5 @@
 function EMfit(claims_data,nexp::Number)
-       maxc=sort[end];
+       maxc=sort(claims_data)[end];
        leng=length(claims_data);
        Theta = rand(0.5*maxc:0.8*maxc,nexp);
        P = ones(nexp)/nexp;
