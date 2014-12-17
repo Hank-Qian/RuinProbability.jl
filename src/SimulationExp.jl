@@ -1,7 +1,7 @@
 function SimulationExp(sp::SurplusProcess,u_0::Number,years::Number)
 leng=length(sp.claims_data);
 aver=mean(sp.claims_data);
-In_time=Distributions.Exponential(duration/leng);
+In_time=Distributions.Exponential(sp.duration/leng);
 x=Distributions.Exponential(mean(sp.claims_data));
 claim=rand(x,1000);
 time=rand(In_time,1000);
@@ -14,7 +14,7 @@ ut=u_0;
 t=t_0;
 for i=1:10000;
 if ut>0 && t<T;
-ut = ut + leng / duration * aver *expense_ratio / loss_ratio * time[i] - claim[i];
+ut = ut + leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio * time[i] - claim[i];
 t = t + time[i];
 end;
 end;
