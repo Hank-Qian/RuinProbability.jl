@@ -11,7 +11,7 @@ function PlotSP(sp::SurplusProcess,nexp::Int64)
 	
        leng = length(sp.claims_data);
        aver = mean(sp.claims_data);
-       AA=EMfit(sp.claims_data,nexp);
+       AA=EMfit(sp,nexp);
        for n=1:nexp;
               Alpha[n] = AA[2][n];
               P_a[n] = AA[1][n];
