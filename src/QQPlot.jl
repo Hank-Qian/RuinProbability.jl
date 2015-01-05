@@ -6,7 +6,7 @@ function QQPlot(sp::SurplusProcess, nexp::Int64)
        aver = mean(sp.claims_data);
        Alpha = zeros(nexp);
        P_a = zeros(nexp);
-       AA=EMfit(sp.claims_data,nexp);
+       AA=EMfit(sp,nexp);
        for n=1:nexp;
               Alpha[n] = AA[2][n];
               P_a[n] = AA[1][n];
