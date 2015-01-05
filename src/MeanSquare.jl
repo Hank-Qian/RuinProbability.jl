@@ -6,7 +6,7 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
        Alpha = zeros(nexp);
        P_a = zeros(nexp);
        w=sort(sp.claims_data);
-       AA=EMfit(sp.claims_data,nexp);
+       AA=EMfit(sp,nexp);
        for n=1:nexp;
               Alpha[n] = AA[2][n];
               P_a[n] = AA[1][n];
