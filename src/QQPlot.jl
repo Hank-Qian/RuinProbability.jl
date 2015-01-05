@@ -57,12 +57,16 @@ function QQPlot(sp::SurplusProcess, nexp::Int64)
               F_d[i] = sum2
        end;
        end ;
+       pop!(QQ_1);
+       pop!(QQ_m);
+       pop!(QQ_FG);
+       pop!(w);
 
        Data=DataFrames.DataFrame(X_1=QQ_1,X_2=QQ_m,X_3=QQ_FG, Y=w);
        
-       CCC=Gadfly.plot(Data, Gadfly.layer(x="X_1", y="Y", Gadfly.Geom.point, Gadfly.Theme(default_color=Gadfly.color("red"))
-       ),Gadfly.layer(x="X_2", y="Y", Gadfly.Geom.point, Gadfly.Theme(default_color=Gadfly.color("blue"))
-       ),Gadfly.layer(x="X_3", y="Y", Gadfly.Geom.point, Gadfly.Theme(default_color=Gadfly.color("green"))
+       CCC=Gadfly.plot(Data, Gadfly.layer(x"Y"=, y="X_1", Gadfly.Geom.point, Gadfly.Theme(default_color=Gadfly.color("red"))
+       ),Gadfly.layer(x="Y", y="X_2", Gadfly.Geom.point, Gadfly.Theme(default_color=Gadfly.color("blue"))
+       ),Gadfly.layer(x="Y", y="X_3", Gadfly.Geom.point, Gadfly.Theme(default_color=Gadfly.color("green"))
        ),Gadfly.layer(x="Y", y="Y", Gadfly.Geom.line, Gadfly.Theme(default_color=Gadfly.color("black"))),  Gadfly.Guide.xlabel("Simulation"), Gadfly.Guide.ylabel("Real Data"), Gadfly.Guide.title("QQ-Plot"));
      
 end
