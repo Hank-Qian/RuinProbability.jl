@@ -24,7 +24,7 @@ There are four functions in the model now. And the functions are related to the 
 and input the **claims_data = collect(readdlm("local document"))**, which can read outernal file in Julia. The format of the claims_data should be a row of data without title.
 Then define the Datatype: **SP = SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration)**, put the data in **SP**.
 #########
-After the surplus process basic information inputted, user needs to decide the claims distribution, the distribution is fitted by EM algorithm, User can input **EMfit(claims_data,number)** to fit the data under mixture exponential distribution. **Expecially**, if use EM algorithm to fit data into exponential distribution, the parameter of the exponential distribution is 1/mean(claims_data), so it is easy to directly put into the ruin probability function instead of using EM firstly.
+After the surplus process basic information inputted, user needs to decide the claims distribution, the distribution is fitted by EM algorithm, User can input **EMfit(SP,number)** to fit the data under mixture exponential distribution. **Expecially**, if use EM algorithm to fit data into exponential distribution, the parameter of the exponential distribution is 1/mean(claims_data), so it is easy to directly put into the ruin probability function instead of using EM firstly.
 ##########
 Then user can get the survival probability(survival probability + ruin probability = 1) by such codes:
 * **SPExp(SP)**, it shows the survival probability under exponential distribution claims distribution. 
