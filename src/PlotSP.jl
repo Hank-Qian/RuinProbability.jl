@@ -101,6 +101,6 @@ function PlotSP(sp::SurplusProcess,nexp::Int64)
        
        Dataa=DataFrames.DataFrame(X_1=spe,X_2=spm, X_3=spf,Y=u);
        Gadfly.plot(Dataa, Gadfly.layer(x="Y", y="X_1", Gadfly.Geom.point, Gadfly.Theme(default_color=Gadfly.color("red"))
-  ), Gadfly.layer(x="Y", y="X_2", Gadfly.Geom.point, Gadfly.Theme(default_color=Gadfly.color("black"))),Gadfly.layer(x="Y", y="X_3", Gadfly.Geom.point, Gadfly.Theme(default_color=Gadfly.color("green"))
+  ), Gadfly.layer(x="Y", y="X_2", Gadfly.Geom.point, Gadfly.Theme(default_color=Gadfly.color("blue"))),Gadfly.layer(x="Y", y="X_3", Gadfly.Geom.point, Gadfly.Theme(default_color=Gadfly.color("green"))
   ),  Gadfly.Guide.xlabel("Simulation"), Gadfly.Guide.ylabel("Real Data"), Gadfly.Guide.title("Survival Probability"));
 end
