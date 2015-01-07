@@ -12,7 +12,7 @@ module RuinProbability
               QQPlot,  
               EMfit, 
               PlotSP,
-              MeanSquare,
+              Dsum,
               SimulationExp
 
 #-------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ module RuinProbability
        include("EMfit.jl")
        include("SPFractionGamma.jl")
        include("PlotSP.jl")
-       include("MeanSquare.jl")
+       include("DSum.jl")
        include("SimulationExp.jl")
 
 
