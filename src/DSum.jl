@@ -30,7 +30,7 @@ function DSum(sp::SurplusProcess, nexp::Int64)
        pop!(QQ_1)
        pop!(w)
         S1=abs(sum(w)-sum(QQ_1));
-        S3=abs(sum(w)-sum(QQ_3));
+        S3=abs(sum(w)-sum(QQ_FG));
         
         Exp=S1/(leng-1);
         FG=S3/(leng-1);
