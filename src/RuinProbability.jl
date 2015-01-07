@@ -12,7 +12,7 @@ module RuinProbability
               QQPlot,  
               EMfit, 
               PlotSP,
-              Dsum,
+              DSum,
               SimulationExp
 
 #-------------------------------------------------------------------------------
