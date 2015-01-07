@@ -60,7 +60,7 @@ function DSum(sp::SurplusProcess, nexp::Int64)
 		        F_d[i] = sum2;
 	        end;
         end;
-       
+       pop!(QQ_FG)
 	pop!(QQ_1)
        pop!(w)
         S1=abs(sum(w)-sum(QQ_1));
