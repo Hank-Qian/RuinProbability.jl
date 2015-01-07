@@ -31,7 +31,7 @@ function DSum(sp::SurplusProcess, nexp::Int64)
        pop!(w)
         S1=abs(sum(w)-sum(QQ_1);
         S3=abs(sum(w)-sum(QQ_3);
-        end
+        
         Exp=S1/(leng-1);
         FG=S3/(leng-1);
     
@@ -70,7 +70,7 @@ function DSum(sp::SurplusProcess, nexp::Int64)
 	
       pop!(QQ_m);
        S2=abs(sum(w)-sum(QQ_m);
-       end;
+      
        MixExp=S2/(leng-1);
        ModelName=["Exp", "MixExp", "FG"];
        Values=[Exp, MixExp, FG];
