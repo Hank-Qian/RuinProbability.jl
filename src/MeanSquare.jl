@@ -1,4 +1,4 @@
-function MeanSquare(sp::SurplusProcess, nexp::Int64)
+function Dsum(sp::SurplusProcess, nexp::Int64)
        a = 0.5/(log(mean(sp.claims_data)) - mean(log(sp.claims_data)));
        b = mean(sp.claims_data)/a;
        leng = length(sp.claims_data);
@@ -28,8 +28,8 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
 	S2=0;
 	S3=0;
        for i=1:leng-1;
-        S1=(QQ_1[i]-w[i])^2+S1;
-        S3=(QQ_FG[i]-w[i])^2+S3;
+        S1=abs(QQ_1[i]-w[i])+S1;
+        S3=abs(QQ_FG[i]-w[i])+S3;
         end
         Exp=S1/(leng-1);
         FG=S3/(leng-1);
@@ -68,10 +68,10 @@ function MeanSquare(sp::SurplusProcess, nexp::Int64)
        
 	
       for i=1:leng-1;
-        S2=(QQ_m[i]-w[i])^2+S2;
+        S2=abs(QQ_m[i]-w[i])+S2;
        end;
        MixExp=S2/(leng-1);
        ModelName=["Exp", "MixExp", "FG"];
        Values=[Exp, MixExp, FG];
-       Data=DataFrames.DataFrame(Model=ModelName, MeanSquare=Values)
+       Data=DataFrames.DataFrame(Model=ModelName, DSum=Values)
        end
