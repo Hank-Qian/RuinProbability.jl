@@ -12,13 +12,13 @@ function DSum(sp::SurplusProcess, nexp::Int64)
               P_a[n] = AA[1][n];
        end;
        
-       percentile = rand(leng);
+       percentile = zeros(leng);
        for i=1:leng;
             percentile[i]=i/leng;
        end;
        
-       QQ_1=rand(leng); 
-       QQ_FG=rand(leng);
+       QQ_1=zeros(leng); 
+       QQ_FG=zeros(leng);
        for i=1:leng;
        
             QQ_1[i]=quantile(Distributions.Exponential(aver),percentile[i]);
@@ -27,9 +27,10 @@ function DSum(sp::SurplusProcess, nexp::Int64)
        	S1=0;
 	S2=0;
 	S3=0;
-       
-    
-       QQ_m=QQ_1;
+       QQ_m=zeros(leng);
+       for i=1:leng;
+       QQ_m[i]=QQ_1[i];
+       end;
        F=zeros(leng);
        F_d=zeros(leng);
 	sum1=0;
