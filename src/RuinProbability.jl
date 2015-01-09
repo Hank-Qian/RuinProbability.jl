@@ -5,6 +5,8 @@ module RuinProbability
        using Gadfly;
        using Polynomial;
        
+       import show
+       
        export SurplusProcess, 
               SPExp, 
               SPMixExp, 
@@ -13,7 +15,10 @@ module RuinProbability
               EMfit, 
               PlotSP,
               DSum,
-              SimulationExp
+              SimulationExp,
+              show
+              
+      
 
 #-------------------------------------------------------------------------------
 # SPExp: survival probability under exponential distribution
