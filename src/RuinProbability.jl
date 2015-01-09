@@ -14,9 +14,10 @@ module RuinProbability
               QQPlot,  
               EMfit, 
               PlotSP,
-              DSum,
+              PDSum,
               SimulationExp,
-              show
+              show,
+              PPPlot
               
       
 
@@ -42,8 +43,9 @@ module RuinProbability
        include("EMfit.jl")
        include("SPFractionGamma.jl")
        include("PlotSP.jl")
-       include("DSum.jl")
+       include("PDSum.jl")
        include("SimulationExp.jl")
+       include("PPPlot.jl")
 
 
 end # module
