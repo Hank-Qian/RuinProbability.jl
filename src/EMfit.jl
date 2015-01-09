@@ -36,5 +36,5 @@ function EMfit(sp::SurplusProcess,nexp::Number)
               Alpha[n]=1/Theta[n];
               P_a[n]=P[n];
        end;
-       Data=DataFrames.DataFrame("Weights"=P_a, "Scales"=Alpha)
+       Data=DataFrames.DataFrame(Weights=P_a, Scales=Alpha)
        end
