@@ -6,6 +6,10 @@ type SurplusProcess
        duration::Number;
 end
 
+function show(io::IO, sp::SurplusProcess)
+        print(io,`This is a Surplus Process`)
+end
+
 #-------------------------------------------------------------------------------
 # User needs to input some basic information about the company.
 # For example, user needs to type:
