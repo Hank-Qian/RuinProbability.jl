@@ -21,7 +21,7 @@ function QQPlot(sp::SurplusProcess, nexp::Int64)
        QQ_FG=rand(leng);
        for i=1:leng;
        
-            QQ_1[i]=quantile(Distributions.Exponential(1/aver),percentile[i]);
+            QQ_1[i]=quantile(Distributions.Exponential(aver),percentile[i]);
             QQ_FG[i]=quantile(Distributions.Gamma(a,b),percentile[i]);
        end;
        
