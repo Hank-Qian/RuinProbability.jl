@@ -5,7 +5,7 @@ module RuinProbability
        using Gadfly;
        using Polynomial;
        
-       import show
+       import Base.show
        
        export SurplusProcess, 
               SPExp, 
