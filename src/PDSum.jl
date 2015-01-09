@@ -27,9 +27,9 @@ PP_FG[i]=Distributions.cdf(FG,w[i]);
 PP_m[i]=PP_m[i] - P_a[j] * exp(-Alpha[j] * w[i]) ;
 end;
 end;
-Exp = abs(1-sum(PP_1));
-MixExp = abs(1-sum(PP_m));
-FG = abs(1-sum(PP_FG));
+Exp = abs(sum(PP)-sum(PP_1));
+MixExp = abs(sum(PP)-sum(PP_m));
+FG = abs(sum(PP)-sum(PP_FG));
        ModelName=["Exp", "MixExp", "FG"];
        Values=[Exp, MixExp, FG];
        Data=DataFrames.DataFrame(Model=ModelName, PDSum=Values)
