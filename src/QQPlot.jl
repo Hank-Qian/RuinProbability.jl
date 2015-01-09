@@ -1,5 +1,4 @@
 function QQPlot(sp::SurplusProcess, nexp::Int64)
-	Gadfly.set_default_plot_size(20Gadfly.cm, 20Gadfly.cm);
        a = 0.5/(log(mean(sp.claims_data)) - mean(log(sp.claims_data)));
        b = mean(sp.claims_data)/a;
        leng = length(sp.claims_data);
