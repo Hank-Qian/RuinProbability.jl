@@ -1,8 +1,13 @@
 function SPExp(sp::SurplusProcess)
        leng = length(sp.claims_data);
        aver = mean(sp.claims_data);
-       
+       c = leng / sp.duration * aver; 
+       if c > aver
        s = 1 - (1 - sp.loss_ratio / sp.expense_ratio) * leng / sp.duration * exp(-(1 / aver - leng / sp.duration / ( leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio)) * sp.initial_capital) / (1 / aver * leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio - leng / sp.duration);
+       end
+       else if c < aver
+       println("Wrong information about loss ratio and expense ratio")
+       end
 end
 #-------------------------------------------------------------------------------
 # This result is generated from surplus process with exponential claims distribution and 
