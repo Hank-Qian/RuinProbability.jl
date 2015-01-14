@@ -18,7 +18,8 @@ module RuinProbability
               SimulationExp,
               show,
               PPPlot,
-              SurPro
+              SurPro,
+              SD
               
       
 
@@ -48,6 +49,7 @@ module RuinProbability
        include("SimulationExp.jl")
        include("PPPlot.jl")
        include("SurPro.jl")
+       include("SD.jl")
 
 
 end # module
