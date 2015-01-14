@@ -2,14 +2,14 @@ function SurPro(sp::SurplusProcess,D::Char)
        leng = length(sp.claims_data);
        aver = mean(sp.claims_data);
        c = leng / sp.duration * aver; 
-       if D = "Exp"
+       if D == "Exp"
        if c > aver
        s = 1 - (1 - sp.loss_ratio / sp.expense_ratio) * leng / sp.duration * exp(-(1 / aver - leng / sp.duration / ( leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio)) * sp.initial_capital) / (1 / aver * leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio - leng / sp.duration);
        else c < aver
        println("Wrong information about loss ratio and expense ratio")
        end
        end
-       if D = "MixExp"
+       if D == "MixExp"
        Alpha = zeros(3);
 	     P_a = zeros(3);
 	     if c > aver
@@ -39,7 +39,7 @@ function SurPro(sp::SurplusProcess,D::Char)
        end
        end
        
-  if D = "FG"
+  if D == "FG"
   if c > aver
        a = 0.5/(log(mean(sp.claims_data)) - mean(log(sp.claims_data)));
        b = mean(sp.claims_data)/a;
