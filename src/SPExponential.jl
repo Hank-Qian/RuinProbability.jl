@@ -4,8 +4,7 @@ function SPExp(sp::SurplusProcess)
        c = leng / sp.duration * aver; 
        if c > aver
        s = 1 - (1 - sp.loss_ratio / sp.expense_ratio) * leng / sp.duration * exp(-(1 / aver - leng / sp.duration / ( leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio)) * sp.initial_capital) / (1 / aver * leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio - leng / sp.duration);
-       end
-       elseif c < aver
+       else c < aver
        println("Wrong information about loss ratio and expense ratio")
        end
 end
