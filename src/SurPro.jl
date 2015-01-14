@@ -13,8 +13,8 @@ function SurPro(sp::SurplusProcess,D::ASCIIString)
        Alpha = zeros(3);
 	     P_a = zeros(3);
 	     if c > aver
-       AA=EMfit(sp,nexp);
-       for n=1:nexp;
+       AA=EMfit(sp,3);
+       for n=1:3;
               Alpha[n] = AA[2][n];
               P_a[n] = AA[1][n];
        end;
@@ -80,7 +80,7 @@ function SurPro(sp::SurplusProcess,D::ASCIIString)
   function MiLe(z);
   sn=0;
   for k=1:10000;
-    sn = z^(k-1) / gamma(1 / n * (k-1) + (1 / n)) + s;
+    sn = z^(k-1) / gamma(1 / n * (k-1) + (1 / n)) + sn;
   end;
   return sn;
   end;
