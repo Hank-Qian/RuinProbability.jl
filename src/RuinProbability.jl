@@ -19,7 +19,9 @@ module RuinProbability
               show,
               PPPlot,
               SurPro,
-              SD
+              Exponential,
+              FracGamma,
+              MixExponential
               
       
 
