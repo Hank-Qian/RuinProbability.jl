@@ -10,9 +10,6 @@ function show(io::IO, sp::SurplusProcess)
         print(io,`This is a Surplus Process`)
 end
 
-Exponential="Exp";
-MixExponential="MixExp";
-FracGamma="FG"
 
 #-------------------------------------------------------------------------------
 # User needs to input some basic information about the company.
