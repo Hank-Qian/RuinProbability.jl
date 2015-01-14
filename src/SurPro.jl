@@ -92,6 +92,7 @@ function SurPro(sp::SurplusProcess,D::Char)
        else c < aver
        println("Wrong information about loss ratio and expense ratio")
        end
+       end
        return(s)
        end
 
