@@ -5,8 +5,7 @@ function SurPro(sp::SurplusProcess,D::Char)
        if D = "Exp"
        if c > aver
        s = 1 - (1 - sp.loss_ratio / sp.expense_ratio) * leng / sp.duration * exp(-(1 / aver - leng / sp.duration / ( leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio)) * sp.initial_capital) / (1 / aver * leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio - leng / sp.duration);
-       end
-       elseif c < aver
+       else c < aver
        println("Wrong information about loss ratio and expense ratio")
        end
        end
@@ -35,8 +34,7 @@ function SurPro(sp::SurplusProcess,D::Char)
        N = 1/(s_3 - s_1) * (-(1- sp.loss_ratio / sp.expense_ratio) * (Alpha[1] + Alpha[2] + Alpha[3]) - M * s_3 - (s_1 + s_2) * (1- sp.loss_ratio / sp.expense_ratio) - (s_3-s_2) * p);
        q = (1- sp.loss_ratio / sp.expense_ratio) - M - N - p;
        s = 1 + N * exp(s_1 * sp.initial_capital) + p * exp( s_2 * sp.initial_capital) + q* exp(s_3 * sp.initial_capital);
-       end
-       elseif c < aver
+       else c < aver
        println("Wrong information about loss ratio and expense ratio")
        end
        end
@@ -90,12 +88,11 @@ function SurPro(sp::SurplusProcess,D::Char)
   for i = 1:(m+n);
     sumpart = sumpart + Mk[i] * MiLe(Sk[i] * sp.initial_capital^(1 / n));
   end;
-  s = exp(-1 / b * sp.initial_capital) * sp.initial_capital^((1-n)/n) * sumpart;
-  return real(s);
- end
-       elseif c < aver
+  s = real(exp(-1 / b * sp.initial_capital) * sp.initial_capital^((1-n)/n) * sumpart);
+       else c < aver
        println("Wrong information about loss ratio and expense ratio")
        end
+       return(s)
        end
 
   
