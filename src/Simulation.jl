@@ -1,4 +1,4 @@
-function Simulation(sp::SurplusProcess,D = ASCIIString, u_0::Number,years::Number)
+function Simulation(sp::SurplusProcess, u_0::Number,years::Number,D = ASCIIString)
 leng=length(sp.claims_data);
 aver=mean(sp.claims_data);
 In_time=Distributions.Exponential(sp.duration/leng);
