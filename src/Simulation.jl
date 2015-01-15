@@ -37,7 +37,7 @@ end
   
 if D == "MixExponential"
 if c > aver
-steps=1000
+steps=3000
 In_time=Exponential(leng/sp.duration)
 unif=rand(Uniform(), steps)
 AA=EMfit(sp,3);
@@ -60,7 +60,7 @@ for n=1:100
 ut=u_0
 t=t_0
 i=0;
-while i<1000 && ut>0 && t<T
+while i<steps && ut>0 && t<T
 i = i + 1
 if unif[i] < P_a[1]
 ut = ut + c * time[i] -x_1[i]
