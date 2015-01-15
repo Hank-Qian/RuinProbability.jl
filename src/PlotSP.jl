@@ -81,9 +81,9 @@ function PlotSP(sp::SurplusProcess, nexp::Int64)
 	       end;
 	       return s;
        end;
-       step=2000;
-       u=zeros(2000);
-       for i=1:2000;
+       step=20000;
+       u=zeros(200);
+       for i=1:200;
        u[i]=i*step;
        end;
        #Sum part in fractional gamma distribution ruin probability
