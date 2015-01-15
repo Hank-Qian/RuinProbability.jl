@@ -1,4 +1,4 @@
-function QQPlot(nexp::Int64)
+function QQPlot(sp::SurplusProcess, nexp::Int64)
        a = 0.5/(log(mean(sp.claims_data)) - mean(log(sp.claims_data)));
        b = mean(sp.claims_data)/a;
        leng = length(sp.claims_data);
