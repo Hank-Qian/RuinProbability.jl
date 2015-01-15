@@ -13,7 +13,7 @@ if D == "Exponential"
 if c > aver
 x=Distributions.Exponential(mean(sp.claims_data));
 claim=rand(x,steps);
-for n=1:10000;
+for n=1:100000;
 ut=u_0;
 t=t_0;
 i=0;
@@ -57,7 +57,7 @@ T=years
 t_0=0
 r=0
 nr=0
-for n=1:1000
+for n=1:100000
 ut=u_0
 t=t_0
 i=0;
@@ -98,7 +98,7 @@ a = 0.5/(log(mean(sp.claims_data)) - mean(log(sp.claims_data)));
 b = mean(sp.claims_data)/a;
 x=Distributions.Gamma(a,b);
 claim=rand(x,steps);
-for n=1:10000;
+for n=1:100000;
 ut=u_0;
 t=t_0;
 i=0;
