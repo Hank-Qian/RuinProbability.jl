@@ -40,6 +40,8 @@ if c > aver
 steps=3000
 In_time=Exponential(leng/sp.duration)
 unif=rand(Uniform(), steps)
+Alpha = zeros(3);
+P_a = zeros(3);
 AA=EMfit(sp,3);
 for n=1:3;
 Alpha[n] = AA[2][n];
