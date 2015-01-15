@@ -38,7 +38,6 @@ end
 if D == "MixExponential"
 if c > aver
 steps=3000
-In_time=Exponential(leng/sp.duration)
 unif=rand(Uniform(), steps)
 Alpha = zeros(3);
 P_a = zeros(3);
