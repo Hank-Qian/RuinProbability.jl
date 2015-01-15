@@ -21,7 +21,8 @@ module RuinProbability
               SurPro,
               Exp,
               FG,
-              MixExp
+              MixExp,
+              Simulation
 
               
       
@@ -53,6 +54,7 @@ module RuinProbability
        include("PPPlot.jl")
        include("SurPro.jl")
        include("SD.jl")
+       include("Simulation.jl")
 
 
 end # module
