@@ -1,6 +1,4 @@
 function PlotSP(sp::SurplusProcess, nexp::Int64)
-	Gadfly.set_default_plot_size(20Gadfly.cm, 20Gadfly.cm);
-	ppp=5000;
 	u=zeros(200);
 	spe=zeros(200);
 	spm=zeros(200);
@@ -20,12 +18,12 @@ function PlotSP(sp::SurplusProcess, nexp::Int64)
        B = ((leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio) * (Alpha[1] * Alpha[2] + Alpha[3] * Alpha[2] + Alpha[1] * Alpha[3]) - (Alpha[1] + Alpha[2] + Alpha[3]) * leng / sp.duration + (Alpha[1] * P_a[1] + Alpha[2] * P_a[2] + Alpha[3] * P_a[3]) * leng / sp.duration) / (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio);
        C = ((leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio) * Alpha[1] * Alpha[2] * Alpha[3] - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2]) * leng / sp.duration + (Alpha[1] * P_a[1] * (Alpha[2] + Alpha[3]) + Alpha[2] * P_a[2] * (Alpha[1] + Alpha[3]) + Alpha[3] * P_a[3] * (Alpha[1] + Alpha[2])) * leng / sp.duration) / (leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio);
         
-       a = -(A^3)/27 + -C/2 + A*B/6;
-       b = B/3 + -(A^2)/9;
+       a_0 = -(A^3)/27 + -C/2 + A*B/6;
+       b_0 = B/3 + -(A^2)/9;
        
-       s_1 = -A/3 + 2 * sqrt(-b) * cos(acos(a/(-b)^(3/2))/3);
-       s_2 = -A/3 + 2 * sqrt(-b) * cos((acos(a/(-b)^(3/2) )+ 2pi)/3);
-       s_3 = -A/3 + 2 * sqrt(-b) * cos((acos(a/(-b)^(3/2) )- 2pi)/3);
+       s_1 = -A/3 + 2 * sqrt(-b_0) * cos(acos(a_0/(-b_0)^(3/2))/3);
+       s_2 = -A/3 + 2 * sqrt(-b_0) * cos((acos(a_0/(-b_0)^(3/2) )+ 2pi)/3);
+       s_3 = -A/3 + 2 * sqrt(-b_0) * cos((acos(a_0/(-b_0)^(3/2) )- 2pi)/3);
        
        M = -(( 1- sp.loss_ratio / sp.expense_ratio) * Alpha[1] * Alpha[2] * Alpha[3]) / (s_1 * s_2 * s_3);
        p = 1 / ((s_2 - s_1) * (s_3 - s_2)) * ((1- sp.loss_ratio / sp.expense_ratio) * (-s_2 * (Alpha[1] + Alpha[2] + Alpha[3]) - s_2^2 - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2])) + s_1 * s_3 * M);
@@ -81,7 +79,7 @@ function PlotSP(sp::SurplusProcess, nexp::Int64)
 	       end;
 	       return s;
        end;
-       step=20000;
+       step=10000;
        u=zeros(200);
        for i=1:200;
        u[i]=i*step;
