@@ -1,11 +1,11 @@
 function PlotSP(sp::SurplusProcess, nexp::Int64)
 	Gadfly.set_default_plot_size(20Gadfly.cm, 20Gadfly.cm);
 	ppp=5000;
-	u=zeros(1000);
-	spe=zeros(1000);
-	spm=zeros(1000);
-	spf=zeros(1000);
-	sumpart=zeros(1000);
+	u=zeros(200);
+	spe=zeros(200);
+	spm=zeros(200);
+	spf=zeros(200);
+	sumpart=zeros(200);
 	Alpha = zeros(nexp);
 	P_a = zeros(nexp);
 	
@@ -81,19 +81,19 @@ function PlotSP(sp::SurplusProcess, nexp::Int64)
 	       end;
 	       return s;
        end;
-       step=3000;
-       u=zeros(1000);
-       for i=1:1000;
+       step=2000;
+       u=zeros(2000);
+       for i=1:2000;
        u[i]=i*step;
        end;
        #Sum part in fractional gamma distribution ruin probability
-       sumpart=zeros(1000);
-       for j=1:1000;
+       sumpart=zeros(200);
+       for j=1:200;
 	       for i = 1:(m+n);
 	       		sumpart[j] = real(sumpart[j] + Mk[i] * MiLe(Sk[i] * u[j]^(1 / n)));
 	       end;
        end
-       for i=1:1000;
+       for i=1:200;
 	       spe[i] = 1 - (1 - sp.loss_ratio / sp.expense_ratio) * leng / sp.duration * exp(-(1/ aver- leng / sp.duration / ( leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio)) * u[i]) / (1 / aver * leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio - leng / sp.duration);
 	       spm[i]= 1 + N * exp(s_1 * u[i]) + p * exp( s_2 * u[i]) + q* exp(s_3 * u[i]);
 	       spf[i]= exp(-1 / b * u[i]) * u[i]^((1-n) / n) * sumpart[i];
