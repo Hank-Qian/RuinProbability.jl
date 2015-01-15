@@ -1,3 +1,3 @@
-Exponential="Exp";
-MixExponential="MixExp";
-FracGamma="FG"
+Exp="Exponential";
+MixExp="MixExponential";
+FG="FracGamma"
