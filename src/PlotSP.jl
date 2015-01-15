@@ -1,4 +1,4 @@
-function PlotSP(sp::SurplusProcess,nexp::Int64)
+function PlotSP(nexp::Int64)
 	Gadfly.set_default_plot_size(20Gadfly.cm, 20Gadfly.cm);
 	ppp=5000;
 	u=zeros(1000);
