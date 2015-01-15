@@ -1,4 +1,4 @@
-function EMfit(nexp::Number)
+function EMfit(sp::SurplusProcess, nexp::Number)
        maxc=sort(sp.claims_data)[end];
        leng=length(sp.claims_data);
        Theta = rand(0.5*maxc:0.8*maxc,nexp);
