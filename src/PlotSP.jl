@@ -1,16 +1,16 @@
-function PlotSP(sp::SurplusProcess, nexp::Int64)
+function PlotSP(sp::SurplusProcess)
 	u=zeros(200);
 	spe=zeros(200);
 	spm=zeros(200);
 	spf=zeros(200);
 	sumpart=zeros(200);
-	Alpha = zeros(nexp);
-	P_a = zeros(nexp);
+	Alpha = zeros(3);
+	P_a = zeros(3);
 	
        leng = length(sp.claims_data);
        aver = mean(sp.claims_data);
-       AA=EMfit(sp,nexp);
-       for n=1:nexp;
+       AA=EMfit(sp,3);
+       for n=1:3;
               Alpha[n] = AA[2][n];
               P_a[n] = AA[1][n];
        end;
