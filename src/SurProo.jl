@@ -1,10 +1,11 @@
 function SurProo(D::ASCIIString)
-       leng = length(SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).claims_data);
-       aver = mean(SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).claims_data);
-       c = leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration * aver; 
+       SP=SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration);
+       leng = length(SP.claims_data);
+       aver = mean(SP.claims_data);
+       c = leng / SP.duration * aver; 
        if D == "Exponential"
        if c > aver
-       s = 1 - (1 - SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).loss_ratio / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).expense_ratio) * leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration * exp(-(1 / aver - leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration / ( leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration * aver * SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).expense_ratio / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).loss_ratio)) * SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).initial_capital) / (1 / aver * leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration * aver * SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).expense_ratio / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).loss_ratio - leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration);
+       s = 1 - (1 - SP.loss_ratio / SP.expense_ratio) * leng / SP.duration * exp(-(1 / aver - leng / SP.duration / ( leng / SP.duration * aver * SP.expense_ratio / SP.loss_ratio)) * SP.initial_capital) / (1 / aver * leng / SP.duration * aver * SP.expense_ratio / SP.loss_ratio - leng / SP.duration);
        else c < aver
        println("Wrong information about loss ratio and expense ratio")
        end
@@ -18,9 +19,9 @@ function SurProo(D::ASCIIString)
               Alpha[n] = AA[2][n];
               P_a[n] = AA[1][n];
        end;
-       A = ((leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration * aver * SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).expense_ratio / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).loss_ratio) * (Alpha[1] + Alpha[2] + Alpha[3]) - leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration) / (leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration * aver * SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).expense_ratio / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).loss_ratio) ;
-       B = ((leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration * aver * SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).expense_ratio / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).loss_ratio) * (Alpha[1] * Alpha[2] + Alpha[3] * Alpha[2] + Alpha[1] * Alpha[3]) - (Alpha[1] + Alpha[2] + Alpha[3]) * leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration + (Alpha[1] * P_a[1] + Alpha[2] * P_a[2] + Alpha[3] * P_a[3]) * leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration) / (leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration * aver * SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).expense_ratio / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).loss_ratio);
-       C = ((leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration * aver * SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).expense_ratio / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).loss_ratio) * Alpha[1] * Alpha[2] * Alpha[3] - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2]) * leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration + (Alpha[1] * P_a[1] * (Alpha[2] + Alpha[3]) + Alpha[2] * P_a[2] * (Alpha[1] + Alpha[3]) + Alpha[3] * P_a[3] * (Alpha[1] + Alpha[2])) * leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration) / (leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration * aver * SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).expense_ratio / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).loss_ratio);
+       A = ((leng / SP.duration * aver * SP.expense_ratio / SP.loss_ratio) * (Alpha[1] + Alpha[2] + Alpha[3]) - leng / SP.duration) / (leng / SP.duration * aver * SP.expense_ratio / SP.loss_ratio) ;
+       B = ((leng / SP.duration * aver * SP.expense_ratio / SP.loss_ratio) * (Alpha[1] * Alpha[2] + Alpha[3] * Alpha[2] + Alpha[1] * Alpha[3]) - (Alpha[1] + Alpha[2] + Alpha[3]) * leng / SP.duration + (Alpha[1] * P_a[1] + Alpha[2] * P_a[2] + Alpha[3] * P_a[3]) * leng / SP.duration) / (leng / SP.duration * aver * SP.expense_ratio / SP.loss_ratio);
+       C = ((leng / SP.duration * aver * SP.expense_ratio / SP.loss_ratio) * Alpha[1] * Alpha[2] * Alpha[3] - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2]) * leng / SP.duration + (Alpha[1] * P_a[1] * (Alpha[2] + Alpha[3]) + Alpha[2] * P_a[2] * (Alpha[1] + Alpha[3]) + Alpha[3] * P_a[3] * (Alpha[1] + Alpha[2])) * leng / SP.duration) / (leng / SP.duration * aver * SP.expense_ratio / SP.loss_ratio);
         
        a = -(A^3)/27 + -C/2 + A*B/6;
        b = B/3 + -(A^2)/9;
@@ -29,11 +30,11 @@ function SurProo(D::ASCIIString)
        s_2 = -A/3 + 2 * sqrt(-b) * cos((acos(a/(-b)^(3/2) )+ 2pi)/3);
        s_3 = -A/3 + 2 * sqrt(-b) * cos((acos(a/(-b)^(3/2) )- 2pi)/3);
        
-       M = -(( 1- SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).loss_ratio / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).expense_ratio) * Alpha[1] * Alpha[2] * Alpha[3]) / (s_1 * s_2 * s_3);
-       p = 1 / ((s_2 - s_1) * (s_3 - s_2)) * ((1- SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).loss_ratio / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).expense_ratio) * (-s_2 * (Alpha[1] + Alpha[2] + Alpha[3]) - s_2^2 - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2])) + s_1 * s_3 * M);
-       N = 1/(s_3 - s_1) * (-(1- SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).loss_ratio / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).expense_ratio) * (Alpha[1] + Alpha[2] + Alpha[3]) - M * s_3 - (s_1 + s_2) * (1- SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).loss_ratio / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).expense_ratio) - (s_3-s_2) * p);
-       q = (1- SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).loss_ratio / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).expense_ratio) - M - N - p;
-       s = 1 + N * exp(s_1 * SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).initial_capital) + p * exp( s_2 * SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).initial_capital) + q* exp(s_3 * SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).initial_capital);
+       M = -(( 1- SP.loss_ratio / SP.expense_ratio) * Alpha[1] * Alpha[2] * Alpha[3]) / (s_1 * s_2 * s_3);
+       p = 1 / ((s_2 - s_1) * (s_3 - s_2)) * ((1- SP.loss_ratio / SP.expense_ratio) * (-s_2 * (Alpha[1] + Alpha[2] + Alpha[3]) - s_2^2 - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2])) + s_1 * s_3 * M);
+       N = 1/(s_3 - s_1) * (-(1- SP.loss_ratio / SP.expense_ratio) * (Alpha[1] + Alpha[2] + Alpha[3]) - M * s_3 - (s_1 + s_2) * (1- SP.loss_ratio / SP.expense_ratio) - (s_3-s_2) * p);
+       q = (1- SP.loss_ratio / SP.expense_ratio) - M - N - p;
+       s = 1 + N * exp(s_1 * SP.initial_capital) + p * exp( s_2 * SP.initial_capital) + q* exp(s_3 * SP.initial_capital);
        else c < aver
        println("Wrong information about loss ratio and expense ratio")
        end
@@ -41,8 +42,8 @@ function SurProo(D::ASCIIString)
        
   if D == "FracGamma"
   if c > aver
-       a = 0.5/(log(mean(SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).claims_data)) - mean(log(SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).claims_data)));
-       b = mean(SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).claims_data)/a;
+       a = 0.5/(log(mean(SP.claims_data)) - mean(log(SP.claims_data)));
+       b = mean(SP.claims_data)/a;
 
        m = 0;
        n = 0;
@@ -55,14 +56,14 @@ function SurProo(D::ASCIIString)
     n = integer(a / a_0);
     end;
   end;
-  aver = mean(SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).claims_data);
-  leng = length(SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).claims_data);
+  aver = mean(SP.claims_data);
+  leng = length(SP.claims_data);
   poli = zeros(m+n+1);
-  poli[1] = leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration * aver * SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).expense_ratio / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).loss_ratio;
-  poli[n+1] = -(leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration * aver * SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).expense_ratio / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).loss_ratio * (1 / b) + leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration);
-  poli[m+n+1] = leng / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).duration * (1 / b)^(m / n);
+  poli[1] = leng / SP.duration * aver * SP.expense_ratio / SP.loss_ratio;
+  poli[n+1] = -(leng / SP.duration * aver * SP.expense_ratio / SP.loss_ratio * (1 / b) + leng / SP.duration);
+  poli[m+n+1] = leng / SP.duration * (1 / b)^(m / n);
   Sk = Polynomial.roots(Polynomial.Poly(poli));
-  f(x) = (1 - SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).loss_ratio / SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).expense_ratio) * x^m;
+  f(x) = (1 - SP.loss_ratio / SP.expense_ratio) * x^m;
   Mk = Array(Complex{Float64},m+n);
   product = 1;
   
@@ -86,9 +87,9 @@ function SurProo(D::ASCIIString)
   end;
   sumpart=0;
   for i = 1:(m+n);
-    sumpart = sumpart + Mk[i] * MiLe(Sk[i] * SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).initial_capital^(1 / n));
+    sumpart = sumpart + Mk[i] * MiLe(Sk[i] * SP.initial_capital^(1 / n));
   end;
-  s = real(exp(-1 / b * SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).initial_capital) * SurplusProcess(initial_capital, claims_data, loss_ratio, expense_ratio, duration).initial_capital^((1-n)/n) * sumpart);
+  s = real(exp(-1 / b * SP.initial_capital) * SP.initial_capital^((1-n)/n) * sumpart);
        else c < aver
        println("Wrong information about loss ratio and expense ratio")
        end
@@ -97,6 +98,7 @@ function SurProo(D::ASCIIString)
        end
 
   
+
 
 
 
