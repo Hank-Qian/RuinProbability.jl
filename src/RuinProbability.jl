@@ -22,7 +22,7 @@ module RuinProbability
               Exp,
               FG,
               MixExp,
-              sp
+
               
       
 
