@@ -19,9 +19,9 @@ module RuinProbability
               show,
               PPPlot,
               SurPro,
-              Exponential,
-              FracGamma,
-              MixExponential
+              Exp,
+              FG,
+              MixExp
               
       
 
