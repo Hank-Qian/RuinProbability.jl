@@ -21,7 +21,8 @@ module RuinProbability
               SurPro,
               Exp,
               FG,
-              MixExp
+              MixExp,
+              sp
               
       
 
