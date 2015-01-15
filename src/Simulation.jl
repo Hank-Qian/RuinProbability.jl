@@ -9,7 +9,7 @@ T=years;
 t_0=0;
 r=0;
 nr=0;
-c = leng / sp.duration * aver; 
+c = leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio; 
 if D == "Exponential"
 if c > aver
 for n=1:10000;
@@ -46,9 +46,9 @@ for n=1:3;
 Alpha[n] = AA[2][n];
 P_a[n] = AA[1][n];
 end;
-X_1=Exponential(Alpha[1])
-X_2=Exponential(Alpha[2])
-X_3=Exponential(Alpha[3])
+X_1=Exponential(1/Alpha[1])
+X_2=Exponential(1/Alpha[2])
+X_3=Exponential(1/Alpha[3])
 time=rand(In_time,steps)
 x_1=rand(X_1,steps)
 x_2=rand(X_2,steps)
@@ -57,7 +57,7 @@ T=years
 t_0=0
 r=0
 nr=0
-for n=1:100
+for n=1:1000
 ut=u_0
 t=t_0
 i=0;
