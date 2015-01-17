@@ -8,14 +8,10 @@ module RuinProbability
        import Base.show
        
        export SurplusProcess, 
-              SPExp, 
-              SPMixExp, 
-              SPFG, 
               QQPlot,  
               EMfit, 
               PlotSP,
               PDSum,
-              SimulationExp,
               show,
               PPPlot,
               SurPro,
@@ -43,14 +39,10 @@ module RuinProbability
 # duration=10 ( the unit of duration is year)
 #-------------------------------------------------------------------------------
        include("SurplusProcess.jl")
-       include("SPExponential.jl")
-       include("SPMixExponential.jl")
        include("QQPlot.jl")
        include("EMfit.jl")
-       include("SPFractionGamma.jl")
        include("PlotSP.jl")
        include("PDSum.jl")
-       include("SimulationExp.jl")
        include("PPPlot.jl")
        include("SurPro.jl")
        include("SD.jl")
