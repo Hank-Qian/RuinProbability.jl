@@ -26,7 +26,7 @@ Then define the Datatype: **SP = SurplusProcess(initial_capital, claims_data, lo
 #########
 After the surplus process basic information inputted, user needs to decide the claims distribution, the distribution is fitted by EM algorithm, User can input **EMfit(SP,number)** to fit the data under mixture exponential distribution. **Expecially**, if use EM algorithm to fit data into exponential distribution, the parameter of the exponential distribution is 1/mean(claims_data), so it is easy to directly put into the ruin probability function instead of using EM firstly.
 ##########
-Then user can get the survival probability(survival probability + ruin probability = 1) by simply typing **SurPro(SP,D)**
+Then user can get the survival probability(survival probability + ruin probability = 1) by simply typing **SurPro(SP,D)** to get explicit solution and **Simulation(SP,initial capital, years, D)** to get simulation solution by MC method.
 *D=distribution*
 there are three distributions can be computed for the survival probability.
 *Exp = Exponential distribution
