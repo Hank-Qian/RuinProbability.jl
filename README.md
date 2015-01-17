@@ -35,7 +35,7 @@ there are three distributions can be computed for the survival probability.
 #########
 And there are some functions for the evaluation of the fitting.
 
-* QQ Plot (quantile and quantile plot) is a probability plot, which is a graphical technique for comparing two probability distributions by plotting their quantiles against each other. In QQPlot function, it will provide the comparison about QQplot between two different claims distributions by **QQPlot(SP,number)**. Red points: Exp, Blue points: Mix3Exp, Green points: FG. 
+* QQ Plot (quantile and quantile plot) is a probability plot, which is a graphical technique for comparing two probability distributions by plotting their quantiles against each other. In QQPlot function, it will provide the comparison about QQplot between two different claims distributions by **QQPlot(SP,number)**. Red points: Exp, Blue points: MixExp, Green points: FG. 
 * PP Plot (probability-probability plot or percent-percent plot) is a probability plot for evaluating how closely two data sets agree, which plots the two cumulative distribution func- tions against each other. **PPPlot(SP,number)** Red points: Exp, Blue points: Mix3Exp, Green points: FG.
 * PDSum is a funtion of numerical explaination of PP Plot. The results are sum of difference of CDF. **PDSum(SP,number)**
 * **PlotSP(SP)**, if user needs a survival probability comparison between different model, this code will present the survival probability against initial capital under different models.
