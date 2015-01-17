@@ -29,9 +29,9 @@ After the surplus process basic information inputted, user needs to decide the c
 Then user can get the survival probability(survival probability + ruin probability = 1) by simply typing **SurPro(SP,D)** to get explicit solution and **Simulation(SP,initial capital, years, D)** to get simulation solution by MC method.
 *D=distribution*
 there are three distributions can be computed for the survival probability.
-*Exp = Exponential distribution
-*MixExp = Mixture three exponential distribution
-*FG = Fractional Gamma distribution
+* Exp = Exponential distribution
+* MixExp = Mixture three exponential distribution
+* FG = Fractional Gamma distribution
 #########
 And there are some functions for the evaluation of the fitting.
 
