@@ -8,6 +8,7 @@ T=years;
 t_0=0;
 r=0;
 nr=0;
+s=0;
 c = leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio; 
 if D == "Exponential"
 if c > aver
