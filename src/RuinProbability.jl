@@ -8,17 +8,24 @@ module RuinProbability
        import Base.show
        
        export SurplusProcess, 
-              QQPlot,  
-              EMfit, 
+              QQPlot, 
+              QQPlott,
+              EMfit,
+              EMfitt,
               PlotSP,
+              PlotSPP,
               PDSum,
+              PDSumm,
               show,
               PPPlot,
+              PPPlott,
               SurPro,
+              SurProo,
               Exp,
               FG,
               MixExp,
-              Simulation
+              Simulation,
+              Simulationn
 
               
       
@@ -45,7 +52,7 @@ module RuinProbability
        include("PDSum.jl")
        include("PPPlot.jl")
        include("SurPro.jl")
-       include("SD.jl")
+       include("Abbreviation.jl")
        include("Simulation.jl")
 
 
