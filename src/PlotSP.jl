@@ -1,4 +1,4 @@
-function PlotSPP(sp::SurplusProcess)
+function PlotSP(sp::SurplusProcess)
 	samples=200;
 	u=zeros(samples);
 	spe=zeros(samples);
