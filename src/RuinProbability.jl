@@ -4,28 +4,23 @@ module RuinProbability
        using Distributions;
        using Gadfly;
        using Polynomial;
+       using Compose;
        
        import Base.show
        
        export SurplusProcess, 
-              QQPlot, 
-              QQPlott,
+              QQPlot,
               EMfit,
-              EMfitt,
               PlotSP,
-              PlotSPP,
               PDSum,
-              PDSumm,
               show,
               PPPlot,
-              PPPlott,
               SurPro,
-              SurProo,
               Exp,
               FG,
               MixExp,
               Simulation,
-              Simulationn
+              Sundrop
 
               
       
@@ -54,6 +49,7 @@ module RuinProbability
        include("SurPro.jl")
        include("Abbreviation.jl")
        include("Simulation.jl")
+       include("Sundrop")
 
 
 end # module
