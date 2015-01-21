@@ -2,21 +2,25 @@ Exp="Exponential";
 MixExp="MixExponential";
 FG="FracGamma";
 
-function SimulationSampleExp(T::Number)
-  Simulation(sp,8000000,T,Exp)
+function Simulation(u_0::Number,years::Number,D = ASCIIString)
+  Simulationn(SP::SurplusProcess,u_0::Number,years::Number,D = ASCIIString)
 end
-function SimulationSampleExp(T::Number)
-  Simulation(sp,8000000,T,Exp)
+function EMfit(nexp::Number)
+  EMfitt(SP::SurplusProcess,nexp::Number)
 end
-function SimulationSampleExp(T::Number)
-  Simulation(sp,8000000,T,Exp)
+function PDSum(nexp::Int64)
+  PDSumm(SP::SurplusProcess, nexp::Int64)
 end
-function SimulationSampleExp(T::Number)
-  Simulation(sp,8000000,T,Exp)
+function PPPlot(nexp::Int64)
+  PPPlott(SP::SurplusProcess, nexp::Int64)
 end
-function SimulationSampleExp(T::Number)
-  Simulation(sp,8000000,T,Exp)
+function PlotSP(samples::Number)
+  PlotSPP(sp::SurplusProcess,samples::Number)
 end
-function SimulationSampleExp(T::Number)
-  Simulation(sp,8000000,T,Exp)
+function QQPlot(nexp::Int64)
+  QQPlott(sp::SurplusProcess, nexp::Int64)
 end
+function SurPro(D::ASCIIString)
+  SurProo(sp::SurplusProcess, D::ASCIIString)
+end
+
