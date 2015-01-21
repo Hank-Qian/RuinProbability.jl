@@ -1,4 +1,4 @@
-function PPPlot(sp::SurplusProcess, nexp::Int64)
+function PPPlott(sp::SurplusProcess, nexp::Int64)
 w=sort(sp.claims_data);
 Alpha = zeros(nexp);
 P_a = zeros(nexp);
