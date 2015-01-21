@@ -49,7 +49,7 @@ module RuinProbability
        include("SurPro.jl")
        include("Abbreviation.jl")
        include("Simulation.jl")
-       include("Sundrop")
+       include("Sundrop.jl")
 
 
 end # module
