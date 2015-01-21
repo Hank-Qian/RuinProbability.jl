@@ -1,9 +1,10 @@
-function PlotSP(sp::SurplusProcess)
-	u=zeros(200);
-	spe=zeros(200);
-	spm=zeros(200);
-	spf=zeros(200);
-	sumpart=zeros(200);
+function PlotSPP(sp::SurplusProcess)
+	samples=200;
+	u=zeros(samples);
+	spe=zeros(samples);
+	spm=zeros(samples);
+	spf=zeros(samples);
+	sumpart=zeros(samples);
 	Alpha = zeros(3);
 	P_a = zeros(3);
 	
@@ -80,18 +81,18 @@ function PlotSP(sp::SurplusProcess)
 	       return s;
        end;
        step=10000;
-       u=zeros(200);
-       for i=1:200;
+       u=zeros(samples);
+       for i=1:samples;
        u[i]=i*step;
        end;
        #Sum part in fractional gamma distribution ruin probability
-       sumpart=zeros(200);
-       for j=1:200;
+       sumpart=zeros(samples);
+       for j=1:samples;
 	       for i = 1:(m+n);
 	       		sumpart[j] = real(sumpart[j] + Mk[i] * MiLe(Sk[i] * u[j]^(1 / n)));
 	       end;
        end
-       for i=1:200;
+       for i=1:samples;
 	       spe[i] = 1 - (1 - sp.loss_ratio / sp.expense_ratio) * leng / sp.duration * exp(-(1/ aver- leng / sp.duration / ( leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio)) * u[i]) / (1 / aver * leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio - leng / sp.duration);
 	       spm[i]= 1 + N * exp(s_1 * u[i]) + p * exp( s_2 * u[i]) + q* exp(s_3 * u[i]);
 	       spf[i]= exp(-1 / b * u[i]) * u[i]^((1-n) / n) * sumpart[i];
