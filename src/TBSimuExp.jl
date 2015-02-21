@@ -51,9 +51,9 @@ r = r + 1
 else
 nr = nr + 1
 end
-In_time_1=Distributions.Exponential(duration/leng);
-In_time_2=Distributions.Exponential(duration*2/leng);
-In_time_3=Distributions.Erlang(2,duration*6/leng)
+In_time_1=Distributions.Exponential(sp.duration/leng);
+In_time_2=Distributions.Exponential(sp.duration*2/leng);
+In_time_3=Distributions.Erlang(2,sp.duration*6/leng)
 time_1=rand(In_time_1,steps);
 time_2=rand(In_time_2,steps);
 time_3=rand(In_time_3,steps);
