@@ -8,9 +8,9 @@ T=years;
 t_0=0;
 r=0;
 nr=0;
-c = leng / sp.duration * aver * (1-sp.expense_ratio) / sp.loss_ratio; 
+c = leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio; 
 if D == "Exponential"
-if (1-sp.expense_ratio) / sp.loss_ratio > 1
+if sp.expense_ratio / sp.loss_ratio > 1
 x=Distributions.Exponential(mean(sp.claims_data));
 claim=rand(x,steps);
 for n=1:100000;
@@ -31,13 +31,13 @@ time=rand(In_time,steps);
 claim=rand(x,steps);
 end;
 s = nr/(r+nr);
-else (1-sp.expense_ratio) / sp.loss_ratio < 1
+else sp.expense_ratio / sp.loss_ratio < 1
 println("Wrong information about loss ratio and expense ratio")
 end
 end
   
 if D == "MixExponential"
-if (1-sp.expense_ratio) / sp.loss_ratio > 1
+if sp.expense_ratio / sp.loss_ratio > 1
 unif=rand(Uniform(), steps)
 Alpha = zeros(3);
 P_a = zeros(3);
@@ -86,14 +86,14 @@ x_3=rand(X_3,steps)
 unif=rand(Uniform(),steps)
 end
 s = nr/(nr+r)
-else (1-sp.expense_ratio) / sp.loss_ratio < 1
+else sp.expense_ratio / sp.loss_ratio < 1
 println("Wrong information about loss ratio and expense ratio")
 end
 end
 
 
 if D == "FracGamma"
-if (1-sp.expense_ratio) / sp.loss_ratio > 1
+if sp.expense_ratio / sp.loss_ratio > 1
 a = 0.5/(log(mean(sp.claims_data)) - mean(log(sp.claims_data)));
 b = mean(sp.claims_data)/a;
 x=Distributions.Gamma(a,b);
@@ -116,7 +116,7 @@ time=rand(In_time,3000);
 claim=rand(x,3000);
 end;
 s = nr/(r+nr);
-else (1-sp.expense_ratio) / sp.loss_ratio < 1
+else sp.expense_ratio / sp.loss_ratio < 1
 println("Wrong information about loss ratio and expense ratio")
 end
 end
