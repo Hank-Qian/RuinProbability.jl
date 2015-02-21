@@ -20,9 +20,9 @@ T=years;
 t_0=0;
 r=0;
 nr=0;
-c = (leng / sp.duration * aver + leng / (sp.duration*12) / 2 * aver )* (1-sp.expense_ratio) / sp.loss_ratio; 
+c = (leng / sp.duration * aver + leng / (sp.duration*12) / 2 * aver )* sp.expense_ratio / sp.loss_ratio; 
 if D == "Exponential"
-if (1-sp.expense_ratio) / sp.loss_ratio > 1;
+if sp.expense_ratio / sp.loss_ratio > 1;
 unif=rand(Uniform(), steps)
 X_1=Exponential(aver);
 X_2=Exponential(aver/2);
@@ -62,7 +62,7 @@ x_2=rand(X_2,steps)
 unif=rand(Uniform(),steps)
 end
 s = nr/(nr+r)
-else (1-sp.expense_ratio) / sp.loss_ratio < 1
+else sp.expense_ratio / sp.loss_ratio < 1
 println("Wrong information about loss ratio and expense ratio")
 end
 end
