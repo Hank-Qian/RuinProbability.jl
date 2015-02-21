@@ -66,3 +66,5 @@ else (1-sp.expense_ratio) / sp.loss_ratio < 1
 println("Wrong information about loss ratio and expense ratio")
 end
 end
+return(s)
+end
