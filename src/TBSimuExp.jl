@@ -32,18 +32,20 @@ x_2=rand(X_2,steps)
 for n=1:100000
 ut=u_0
 t=t_0
-i=0;
+i=1;
 while i<steps && ut>0 && t<T
-i = i + 1
 if unif[i] < P_1
 ut = ut + c * time_1[i] -x_1[i]
 t = t + time_1[i]
+i=i+1
     elseif P_1 <= unif[i] < P_1 + P_2
 		ut = ut + c * time_2[i] - x_2[i]
 t = t + time_2[i]
+i=i+1
 		elseif P_1 + P_2 <= unif[i]
 		ut = ut + c * time_3[i] - x_1[i] - x_2[i]
 t = t + time_3[i]
+i=i+1
 end
 end
 if t < T
@@ -51,9 +53,6 @@ r = r + 1
 else
 nr = nr + 1
 end
-In_time_1=Distributions.Exponential(sp.duration/leng);
-In_time_2=Distributions.Exponential(sp.duration*2/leng);
-In_time_3=Distributions.Erlang(2,sp.duration*6/leng)
 time_1=rand(In_time_1,steps);
 time_2=rand(In_time_2,steps);
 time_3=rand(In_time_3,steps);
