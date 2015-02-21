@@ -29,7 +29,7 @@ X_2=Exponential(aver/2);
 x_1=rand(X_1,steps)
 x_2=rand(X_2,steps)
 
-for n=1:100000
+for n=1:10000
 ut=u_0
 t=t_0
 i=1;
