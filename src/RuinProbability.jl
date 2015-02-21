@@ -20,8 +20,8 @@ module RuinProbability
               FG,
               MixExp,
               Simulation,
-              Sundrop
-
+              Sundrop,
+              TBSimu
               
       
 
@@ -50,7 +50,7 @@ module RuinProbability
        include("Abbreviation.jl")
        include("Simulation.jl")
        include("Sundrop.jl")
-
+       include("TBSimuExp.jl")
 
 end # module
 
