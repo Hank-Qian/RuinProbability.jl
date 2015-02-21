@@ -1,6 +1,6 @@
 function TBSimu(sp::SurplusProcess, u_0::Number,years::Number,D = ASCIIString)
 
-steps=3000;
+steps=5000;
 leng=length(sp.claims_data);
 aver=mean(sp.claims_data);
 
