@@ -1,4 +1,4 @@
-function SurPro(sp::SurplusProcess,u_0=Number, D::ASCIIString)
+function SurPro(sp::SurplusProcess,u_0::Number, D::ASCIIString)
        leng = length(sp.claims_data);
        aver = mean(sp.claims_data);
        c = leng / sp.duration * aver; 
