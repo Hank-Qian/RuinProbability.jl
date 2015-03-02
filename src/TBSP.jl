@@ -45,5 +45,5 @@ C=A^(-1)*b
 
 s=C_1 + C_2 *q(z_2) * exp(z_2 * u_0) + C_3 * q(z_3) * exp(z_3 * u_0) + C_4 * q(z_4) * exp(z_4 * u_0)
 
-Return s
+return(s)
 end
