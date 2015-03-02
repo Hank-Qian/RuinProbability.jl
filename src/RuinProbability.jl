@@ -21,7 +21,8 @@ module RuinProbability
               MixExp,
               Simulation,
               Sundrop,
-              TBSimu
+              TBSimu,
+              TBSP
               
       
 
@@ -51,6 +52,6 @@ module RuinProbability
        include("Simulation.jl")
        include("Sundrop.jl")
        include("TBSimuExp.jl")
-
+       include("TBSP.jl")
 end # module
 
