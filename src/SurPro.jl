@@ -1,4 +1,4 @@
-function SurPro(sp::SurplusProcess, D::ASCIIString)
+function SurPro(sp::SurplusProcess,u_0=Number, D::ASCIIString)
        leng = length(sp.claims_data);
        aver = mean(sp.claims_data);
        c = leng / sp.duration * aver; 
@@ -33,7 +33,7 @@ function SurPro(sp::SurplusProcess, D::ASCIIString)
        p = 1 / ((s_2 - s_1) * (s_3 - s_2)) * ((1- sp.loss_ratio / sp.expense_ratio) * (-s_2 * (Alpha[1] + Alpha[2] + Alpha[3]) - s_2^2 - (Alpha[1] * Alpha[2] + Alpha[1] * Alpha[3] + Alpha[3] * Alpha[2])) + s_1 * s_3 * M);
        N = 1/(s_3 - s_1) * (-(1- sp.loss_ratio / sp.expense_ratio) * (Alpha[1] + Alpha[2] + Alpha[3]) - M * s_3 - (s_1 + s_2) * (1- sp.loss_ratio / sp.expense_ratio) - (s_3-s_2) * p);
        q = (1- sp.loss_ratio / sp.expense_ratio) - M - N - p;
-       s = 1 + N * exp(s_1 * sp.initial_capital) + p * exp( s_2 * sp.initial_capital) + q* exp(s_3 * sp.initial_capital);
+       s = 1 + N * exp(s_1 * u_0) + p * exp( s_2 * u_0) + q* exp(s_3 * u_0);
        else c < aver
        println("Wrong information about loss ratio and expense ratio")
        end
@@ -86,9 +86,9 @@ function SurPro(sp::SurplusProcess, D::ASCIIString)
   end;
   sumpart=0;
   for i = 1:(m+n);
-    sumpart = sumpart + Mk[i] * MiLe(Sk[i] * sp.initial_capital^(1 / n));
+    sumpart = sumpart + Mk[i] * MiLe(Sk[i] * u_0^(1 / n));
   end;
-  s = real(exp(-1 / b * sp.initial_capital) * sp.initial_capital^((1-n)/n) * sumpart);
+  s = real(exp(-1 / b * u_0) * u_0^((1-n)/n) * sumpart);
        else c < aver
        println("Wrong information about loss ratio and expense ratio")
        end
