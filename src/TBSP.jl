@@ -5,6 +5,7 @@ aver=mean(SP.claims_data);
 lambda_1=SP.duration/leng
 lambda_2=SP.duration*2/leng
 lambda_3=SP.duration*6/leng
+lambda=1/lambda_1+1/lambda_2+1/lambda_3
 P_1=1/lambda_1/(1/lambda_1+1/lambda_2+1/lambda_3);
 P_2=1/lambda_2/(1/lambda_1+1/lambda_2+1/lambda_3);
 P_3=1/lambda_3/(1/lambda_1+1/lambda_2+1/lambda_3);
