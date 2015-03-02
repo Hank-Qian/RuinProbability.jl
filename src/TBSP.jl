@@ -39,7 +39,7 @@ b=[b_1;b_2;b_3]
 
 C=A^(-1)*b
 
-Phi(u)=C_1 + C[1] *q(z_2) * exp(z_2 * u_0) + C[2] * q(z_3) * exp(z_3 *u_0) + C[3] * q(z_4) * exp(z_4 * u_0)
+s=C_1 + C[1] *q(z_2) * exp(z_2 * u_0) + C[2] * q(z_3) * exp(z_3 *u_0) + C[3] * q(z_4) * exp(z_4 * u_0)
 
 return(s)
 end
