@@ -43,7 +43,7 @@ b=[b_1;b_2;b_3]
 A*C
 C=A^(-1)*b
 
-Phi(u)=C_1 + C_2 *q(z_2) * exp(z_2 * u) + C_3 * q(z_3) * _3exp(z *u) + C_4 * q(z_4) * exp(z_4 * u)
+s=C_1 + C_2 *q(z_2) * exp(z_2 *SP.initial_capital) + C_3 * q(z_3) * _3exp(z * SP.initial_capital) + C_4 * q(z_4) * exp(z_4 * SP.initial_capital)
 
-Return Phi(u)
+Return s
 end
