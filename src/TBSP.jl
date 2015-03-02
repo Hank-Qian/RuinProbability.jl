@@ -1,4 +1,4 @@
-function TBSP(SP::SurplusProcess, u_0::Number)
+function TBSP(SP::SurplusProcess)
 
 leng=length(SP.claims_data);
 aver=mean(SP.claims_data);
