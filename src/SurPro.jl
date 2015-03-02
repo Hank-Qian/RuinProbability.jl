@@ -1,11 +1,11 @@
 function SurPro(sp::SurplusProcess,u_0::Number, D::ASCIIString)
        leng = length(sp.claims_data);
        aver = mean(sp.claims_data);
-       c = leng / sp.duration * aver; 
+       c = sp.expense_ratio/sp.loss_ratio * leng / sp.duration * aver; 
        if D == "Exponential"
-       if c > aver
+       if c > leng / sp.duration * aver
        s = 1 - (1 - sp.loss_ratio / sp.expense_ratio) * leng / sp.duration * exp(-(1 / aver - leng / sp.duration / ( leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio)) * u_0) / (1 / aver * leng / sp.duration * aver * sp.expense_ratio / sp.loss_ratio - leng / sp.duration);
-       else c < aver
+       else c < leng / sp.duration * aver
        println("Wrong information about loss ratio and expense ratio")
        end
        end
@@ -40,7 +40,7 @@ function SurPro(sp::SurplusProcess,u_0::Number, D::ASCIIString)
        end
        
   if D == "FracGamma"
-  if c > aver
+  if c > leng / sp.duration * aver
        a = 0.5/(log(mean(sp.claims_data)) - mean(log(sp.claims_data)));
        b = mean(sp.claims_data)/a;
 
@@ -89,7 +89,7 @@ function SurPro(sp::SurplusProcess,u_0::Number, D::ASCIIString)
     sumpart = sumpart + Mk[i] * MiLe(Sk[i] * u_0^(1 / n));
   end;
   s = real(exp(-1 / b * u_0) * u_0^((1-n)/n) * sumpart);
-       else c < aver
+       else c < leng / sp.duration * aver
        println("Wrong information about loss ratio and expense ratio")
        end
        end
