@@ -22,7 +22,7 @@ The package is for calculating the survival probability under different claims m
 * **expense_ratio = 0.27**
 * **duration = 10**
 
-and input the **claims_data = collect(readdlm("local document"))**, which can read outernal file in Julia. The format of the claims_data should be a row of data without title, or users can input the data themself.
+and input the **claims_data = collect(readdlm("local document path"))**, which can read outernal file in Julia. The format of the claims_data should be a row of data without title, or users can input the data themself.
 Then define the Datatype: **SP = SurplusProcess( claims_data, loss_ratio, expense_ratio, duration)**, put the data in **SP**. *Author is still trying to avoid of asking users to enter this code.* 
 
 ##########
