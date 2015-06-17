@@ -24,6 +24,7 @@ The package is for calculating the survival probability under different claims m
 
 and input the **claims_data = collect(readdlm("local document"))**, which can read outernal file in Julia. The format of the claims_data should be a row of data without title, or users can input the data themself.
 Then define the Datatype: **SP = SurplusProcess( claims_data, loss_ratio, expense_ratio, duration)**, put the data in **SP**. *Author is still trying to avoid of asking users to enter this code.* 
+
 ##########
 Then user can get the survival probability(survival probability + ruin probability = 1) by simply typing **SurPro(SP,initial_capital::Number,D::Distributions)** to get explicit solution and **Simulation(SP,initial_capital::Number, years::Number, D::Distributions)** to get simulation solution by MC method.
 Where *D=distribution*
@@ -31,7 +32,9 @@ there are three distributions can be used for the survival probability.
 * Exp = Exponential distribution
 * MixExp = Mixture three exponential distribution
 * FG = Fractional Gamma distribution
+
 #########
+
 And there are some functions for the evaluation of the fitting.
 * EMfit function. When users want to check the fitting details under mixture exponential distribution, they can input EMfit(SP, numbers of mixture exponential::Number), then the package will provide the fitting parameters to unsers.
 * QQ Plot (quantile and quantile plot) is a probability plot, which is a graphical technique for comparing two probability distributions by plotting their quantiles against each other. In QQPlot function, it will provide the comparison about QQplot between two different claims distributions by **QQPlot(SP,number)**. Red points: Exp, Blue points: MixExp, Green points: FG. 
