@@ -106,7 +106,7 @@ s_or= r_or/(r_or+nr_or);
 s_and=r_and/(r_and+nr_and);
 
 
-s=zeros(5);
+s=zeros(4);
 s[1]=s_1;
 s[2]=s_2;
 s[3]=s_or;
