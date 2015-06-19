@@ -112,7 +112,7 @@ s[2]=s_2;
 s[3]=s_or;
 s[4]=s_and;
 s[5]=s_1*s_2;
-name=["Ruin_1","Ruin_2","Ruin_or","Ruin_and","Compare"];
+name=["Ruin_1","Ruin_2","Ruin_or","Ruin_and","Dependency"];
 Data=DataFrames.DataFrame(Name=name,Ruinprobability=s);
 
 return(Data)
