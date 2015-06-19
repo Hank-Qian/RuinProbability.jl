@@ -23,7 +23,7 @@ module RuinProbability
               Sundrop,
               TBSimu,
               TBSP,
-              IndependentCase
+              
               
       
 
@@ -54,6 +54,5 @@ module RuinProbability
        include("Sundrop.jl")
        include("TBSimuExp.jl")
        include("TBSP.jl")
-       include("IndependentCase.jl")
 end # module
 
